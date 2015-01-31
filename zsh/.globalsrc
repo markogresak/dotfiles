@@ -1,0 +1,30 @@
+# global config, used by zsh and bash rc
+esPath="/Users/markogresak/Documents/dev/.emscripten_sdk"
+export PATH="$HOME/.node/bin:$HOME/.node/lib/node_modules:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/mongodb:/Users/markogresak/Library/Haskell/bin:"$esPath:$esPath/clang/e1.27.0_64bit:$esPath/node/0.10.18_64bit/bin:$esPath/emscripten/1.27.0""
+unset esPath
+HISTFILESIZE=10000
+export ANDROID_HOME="/usr/local/Cellar/android-sdk/23.0.2"
+export CHROME_BIN=/opt/homebrew-cask/Caskroom/google-chrome/latest/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+export FIREFOX_BIN="/opt/homebrew-cask/Caskroom/firefox/latest/Firefox.app/Contents/MacOS/firefox"
+export PHANTOMJS_BIN="/usr/local/bin/phantomjs"
+export id=63130058
+export ID=63130058
+export sola=/Users/markogresak/Documents/Sola
+export dev=/Users/markogresak/Documents/dev
+export repos=/Users/markogresak/Documents/repositories
+export mgresak=ec2-user@mgresak.com
+export sshelp=root@sshelp.me
+export COFFEELINT_CONFIG=~/.coffeelintrc
+export EDITOR=subl
+export lalgec=s63130058@lalgec.fri.uni-lj.si
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export NODE_ENV="development"
+export MYVIMRC="~/.vimrc"
+alias ll="ls -l"
+alias la="ls -a"
+alias lla="ls -la"
+alias npmr="npm run-script"
+alias npi="npm install"
+alias gs="git status"
+
