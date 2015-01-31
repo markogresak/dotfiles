@@ -1,0 +1,13 @@
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[user]
+	name = Marko Grešak
+	email = marko@gresak.io
+	editor = vim
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+[color]
+	ui = true
