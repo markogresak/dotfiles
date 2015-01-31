@@ -9,9 +9,11 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+" editor config
+Plugin 'editorconfig/editorconfig-vim'
 " powerline
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-
+" YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -191,7 +193,7 @@ augroup configgroup
     autocmd FileType ruby setlocal shiftwidth=2
     autocmd FileType ruby setlocal softtabstop=2
     autocmd FileType ruby setlocal commentstring=#\ %s
-   autocmd FileType python setlocal commentstring=#\ %s
+    autocmd FileType python setlocal commentstring=#\ %s
     autocmd BufEnter *.cls setlocal filetype=java
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter Makefile setlocal noexpandtab
