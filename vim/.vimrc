@@ -22,6 +22,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
 " supertab - tab everything
 "Plugin 'ervandew/supertab'
+" syntax checker
+Plugin 'scrooloose/syntastic'
 " fuzzy finder
 Plugin 'kien/ctrlp.vim'
 " fugitive
@@ -32,6 +34,9 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'walm/jshint.vim'
 " coffeescript-syntax
 Plugin 'kchmck/vim-coffee-script'
+" typescript
+Plugin 'leafgarland/typescript-vim'
+Plugin 'clausreinke/typescript-tools'
 " ag, the silver searcher
 Plugin 'rking/ag.vim'
 " nerd commenter
@@ -87,6 +92,19 @@ colorscheme molokai
 " use default molokai theme
 let g:molokai_original=1
 let g:rehash256=1
+
+" syntastic config
+let b:syntastic_mode='active'
+" enables error reporting in the gutter
+let g:syntastic_enable_signs=1
+"let g:syntastic_always_populate_loc_list=1
+" when there are errors, show the quickfix window that lists those errors
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 
 let delimitMate_expand_cr=1
@@ -380,11 +398,9 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-" map expand snippet to kk
-nmap kk <c-k>
+" map expand snippet to kk (insert mode only)
 imap kk <c-k>
-" map jump to next to ll
-nmap ll <c-l>
+" map jump to next to ll (insert mode only)
 imap ll <c-l>
 
 " If you want :UltiSnipsEdit to split your window.
@@ -393,3 +409,11 @@ let g:UltiSnipsEditSplit="vertical"
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "let g:ycm_key_list_select_completion=[]
 "let g:ycm_key_list_previous_completion=[]
+
+" typescript config
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+" typescript tss config
+au BufRead,BufNewFile *.ts        setlocal filetype=typescript
+set rtp+=~/.node/lib/node_modules/typescript-tools/
+
