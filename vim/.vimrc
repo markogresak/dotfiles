@@ -10,31 +10,22 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+
+"Plugin 'marcweber/vim-addon-manager'
 " editor config
 Plugin 'editorconfig/editorconfig-vim'
 " powerline
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+" nerd tree
+Plugin 'scrooloose/nerdtree'
 " YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 " supertab - tab everything
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 " fuzzy finder
 Plugin 'kien/ctrlp.vim'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
+" fugitive
 Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
 " javascript-syntax
 Plugin 'jelera/vim-javascript-syntax'
 " jshint
@@ -46,12 +37,12 @@ Plugin 'rking/ag.vim'
 " nerd commenter
 Plugin 'scrooloose/nerdcommenter'
 " pathogen
-Plugin 'tpope/vim-pathogen'
+"Plugin 'tpope/vim-pathogen'
 " snipmate
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'honza/vim-snippets'
-Plugin 'garbas/vim-snipmate'
+"Plugin 'MarcWeber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
+"Plugin 'honza/vim-snippets'
+"Plugin 'garbas/vim-snipmate'
 " coffeescript snippets
 Plugin 'carlosvillu/coffeScript-VIM-Snippets'
 " node completion with recognizing local modules
@@ -66,6 +57,8 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'Raimondi/delimitMate'
 " handle surrouding characters, i.e. ', ", ...
 Plugin 'tpope/vim-surround'
+" multiple cursors
+Plugin 'terryma/vim-multiple-cursors'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " enable syntax processing
@@ -82,16 +75,55 @@ filetype plugin indent on
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-" see :h vundle for more details or wiki for FAQ
+"" see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-"source ~/.vim/bundle/vim-snipmate/after/plugin/snipMate.vim
+
+set nocompatible | filetype indent plugin on | syn on
+
+fun! SetupVAM()
+  let c = get(g:, 'vim_addon_manager', {})
+  let g:vim_addon_manager = c
+  let c.plugin_root_dir = expand('$HOME', 1) . '/.vim/vim-addons'
+
+  " Force your ~/.vim/after directory to be last in &rtp always:
+  " let g:vim_addon_manager.rtp_list_hook = 'vam#ForceUsersAfterDirectoriesToBeLast'
+
+  " most used options you may want to use:
+  " let c.log_to_buf = 1
+  " let c.auto_install = 0
+  let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
+  if !isdirectory(c.plugin_root_dir.'/vim-addon-manager/autoload')
+    execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '
+        \       shellescape(c.plugin_root_dir.'/vim-addon-manager', 1)
+  endif
+
+  " This provides the VAMActivate command, you could be passing plugin names, too
+  call vam#ActivateAddons(['snipMate'], {})
+endfun
+call SetupVAM()
+
+" ACTIVATING PLUGINS
+
+" OPTION 1, use VAMActivate
+"VAMActivate PLUGIN_NAME PLUGIN_NAME ..
+"VAMActivate vim-snippets
+
+" OPTION 2: use call vam#ActivateAddons
+call vam#ActivateAddons([])
+" use <c-x><c-p> to complete plugin names
+
+" OPTION 3: Create a file ~/.vim-srcipts putting a PLUGIN_NAME into each line
+" See lazy loading plugins section in README.md for details
+"call vam#Scripts('~/.vim-scripts', {'tag_regex': '.*'})
+
 
 " use molokai theme
 colorscheme molokai
 " use default molokai theme
-let g:molokai_original = 1
-let g:rehash256 = 1
+let g:molokai_original=1
+let g:rehash256=1
+
 
 let delimitMate_expand_cr=1
 set scrolloff=3
@@ -117,6 +149,8 @@ set cursorline
 
 " visual autocomplete for command menu
 set wildmenu
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
 
 " redraw only when have to (e.g. don't do it during macros)
 set lazyredraw
@@ -266,23 +300,19 @@ endif
 "call vam#ActivateAddons(['powerline'])
 
 " powerline config
-set guifont=Inconsolata
+set guifont=Inconsolata-g\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
-set t_Co=256
-set term=xterm-256color
 set termencoding=utf-8
+set t_Co=256
+"set term=xterm-256color
 
 " macvim (gui mode) config
 if has("gui_running")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    set guifont=Inconsolata:h15
-  endif
+  "let s:uname = system("uname")
+  "if s:uname == "Darwin\n"
+  "set guioptions-=e
 endif
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
 
 "Always show current position
 set ruler
@@ -376,3 +406,15 @@ function! NumberToggle()
 endfunc
 :call NumberToggle()
 nnoremap <C-n> :call NumberToggle()<cr>
+
+" open nerdtree automatically
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" snipmate config
+let g:snipMate = {}
+imap <C-J> <Plug>snipMateTrigger
+smap <C-J> <Plug>snipMateTrigger
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
