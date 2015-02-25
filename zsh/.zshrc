@@ -94,6 +94,14 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="subl ~/.zshrc"
 alias ohmyzsh="subl ~/.oh-my-zsh"
 
+cdproj () {
+  if [[ -n "$proj" ]]; then
+    cd "$proj"
+  else
+    echo 'Project variable $proj is not set!'
+  fi
+}
+
 mkc () {
   mkdir -p "$@" && cd "$@"
 }
