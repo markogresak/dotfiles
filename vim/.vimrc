@@ -20,6 +20,8 @@ Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'scrooloose/nerdtree'
 " YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
+" emmet
+Plugin 'mattn/emmet-vim'
 " supertab - tab everything
 "Plugin 'ervandew/supertab'
 " syntax checker
@@ -30,6 +32,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 " javascript-syntax
 Plugin 'jelera/vim-javascript-syntax'
+" JSON
+Plugin 'elzr/vim-json'
 " jshint
 Plugin 'walm/jshint.vim'
 " coffeescript-syntax
@@ -68,6 +72,8 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-surround'
 " multiple cursors
 Plugin 'terryma/vim-multiple-cursors'
+" markdown
+Plugin 'plasticboy/vim-markdown'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " enable syntax processing
