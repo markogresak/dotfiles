@@ -432,8 +432,8 @@ endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
 
 " open nerdtree automatically
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 
 " ultisnips Trigger configuration. Do not use <tab> if you use YouCompleteMe.
