@@ -214,6 +214,9 @@ nnoremap gV `[v`]
 "inoremap kj <esc>
 inoremap jj <esc>
 
+" insert a single character in normal mode
+:nmap <silent> ,s "=nr2char(getchar())<cr>P
+
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
 
@@ -443,7 +446,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 " map expand snippet to kk (insert mode only)
 imap kk <c-k>
 " map jump to next to ll (insert mode only)
-imap ll <c-l>
+"imap ll <c-l>
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
