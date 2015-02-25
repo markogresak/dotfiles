@@ -57,7 +57,8 @@ POWERLINE_NO_BLANK_LINE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+# https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
+plugins=(git git-extras git-flow npm osx sudo web-search)
 
 # User configuration
 
