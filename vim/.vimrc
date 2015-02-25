@@ -108,10 +108,18 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
+" jump to line if error
+"let g:syntastic_auto_jump=2
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+" automatically run this every 200ms
+augroup syntastic
+    autocmd CursorHold * nested update
+augroup END
+set updatetime=200
+" map ,n as jump to next error
+nnoremap <leader>n :lnext<CR>
 
 let delimitMate_expand_cr=1
 set scrolloff=3
@@ -419,7 +427,9 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 " typescript config
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
+let g:typescript_compiler_options='--target ES5'
 " typescript tss config
 au BufRead,BufNewFile *.ts        setlocal filetype=typescript
 set rtp+=~/.node/lib/node_modules/typescript-tools/
-
+" typescript + syntastic
+let g:syntastic_typescript_tsc_args='--module commonjs --target ES5'
