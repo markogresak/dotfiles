@@ -145,8 +145,28 @@ set cursorline
 
 " visual autocomplete for command menu
 set wildmenu
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
+" unset ctrlp command if set
+if exists("g:ctrl_user_command")
+  unlet g:ctrlp_user_command
+endif
+" Ignore files
+set wildignore+=*.o,*~,*.pyc,*/\.git/*,*/tmp/*,*.so,*.swp,*.zip
+" Ignore files in .gitignore (if existant)
+let filename = '.gitignore'
+if filereadable(filename)
+    let igstring = ''
+    for oline in readfile(filename)
+        let line = substitute(oline, '\s|\n|\r', '', "g")
+        if line =~ '^#' | con | endif
+        if line == '' | con  | endif
+        if line =~ '^!' | con  | endif
+        if line =~ '/$' | let igstring .= "," . line . "*" | con | endif
+        let igstring .= "," . line
+    endfor
+    let execstring = "set wildignore+=".substitute(igstring, '^,', '', "g")
+    execute execstring
+endif
+
 
 " redraw only when have to (e.g. don't do it during macros)
 set lazyredraw
@@ -209,10 +229,18 @@ nnoremap <leader>s :mksession<CR>
 nnoremap <leader>a :Ag
 
 " CtrlP settings
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_match_window='bottom,order:ttb'
+let g:ctrlp_switch_buffer=0
+let g:ctrlp_working_path_mode='ra'
+let g:ctrlp_show_hidden=1
+let g:ctrlp_user_command='ag %s -l --nocolor --hidden -g ""'
+"let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore={
+  \ 'dir':  '\v[\/]\.(git|hg)$',
+  \ 'file': '',
+  \ 'link': '',
+  \ }
 
 " use pathogen
 call pathogen#infect()
