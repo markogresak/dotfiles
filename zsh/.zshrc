@@ -114,3 +114,6 @@ cloneorg () {
     cd ..
   done;
 }
+
+# gulp completions
+eval "$(gulp --completion=zsh)"
