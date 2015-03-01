@@ -26,8 +26,6 @@ export PHANTOMJS_BIN="/usr/local/bin/phantomjs"
 export SUBL_PACKAGES="$HOME/Library/Application Support/Sublime Text 3/Packages"
 # coffee lint config file
 export COFFEELINT_CONFIG=~/.coffeelintrc
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
 # local paths (used a lot)
 export sola=$HOME/Documents/Sola
 export dev=$HOME/Documents/dev
@@ -66,3 +64,6 @@ alias nprs="npm rm -S"
 alias nprd="npm rm -D"
 alias nprg="npm rm -g"
 
+## config
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
