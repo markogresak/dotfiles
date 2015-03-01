@@ -68,6 +68,8 @@ plugins=(git git-extras git-flow npm osx sudo web-search)
 source ~/.globalsrc
 # powerline bindings
 source /Users/markogresak/Documents/dev/powerline/powerline/bindings/zsh/powerline.zsh
+# history size
+HISTFILESIZE=10000
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then

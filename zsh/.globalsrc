@@ -5,7 +5,6 @@ esPath="$HOME/Documents/dev/.emscripten_sdk"
 caskroom="/opt/homebrew-cask/Caskroom"
 # nvm (Node Version Manager) installs location
 export NVM_DIR=~/.nvm
-HISTFILESIZE=10000
 # path to global npm packages
 export NPM_GLOBAL="$HOME/.node/lib/node_modules"
 # system and node/npm related paths
