@@ -66,6 +66,7 @@ plugins=(git git-extras git-flow npm osx sudo web-search)
 
 # PATH and other global variables
 source ~/.globalsrc
+source ~/.secretrc
 # powerline bindings
 source /Users/markogresak/Documents/dev/powerline/powerline/bindings/zsh/powerline.zsh
 # history size
