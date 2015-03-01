@@ -1,25 +1,48 @@
 # global config, used by zsh and bash rc
-esPath="/Users/markogresak/Documents/dev/.emscripten_sdk"
-export PATH="$HOME/.node/bin:$HOME/.node/lib/node_modules:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/mongodb:/Users/markogresak/Library/Haskell/bin:"$esPath:$esPath/clang/e1.27.0_64bit:$esPath/node/0.10.18_64bit/bin:$esPath/emscripten/1.27.0""
+
+## paths
+esPath="$HOME/Documents/dev/.emscripten_sdk"
+caskroom="/opt/homebrew-cask/Caskroom"
+# nvm (Node Version Manager) installs location
 export NVM_DIR=~/.nvm
-unset esPath
 HISTFILESIZE=10000
+# path to global npm packages
+export NPM_GLOBAL="$HOME/.node/lib/node_modules"
+# system and node/npm related paths
+PATH="$HOME/.node/bin:$NPM_GLOBAL:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/mongodb"
+# Haskell
+PATH="$PATH:$HOME/Library/Haskell/bin"
+# emscripten
+PATH="$PATH:$esPath:$esPath/clang/e1.27.0_64bit:$esPath/node/0.10.18_64bit/bin:$esPath/emscripten/1.27.0"
+# caskroom exports
+PATH="$PATH:$caskroom/vlc/2.1.4/VLC.app/Contents/MacOS"
+export PATH=$PATH
+# android sdk
 export ANDROID_HOME="/usr/local/Cellar/android-sdk/23.0.2"
-export CHROME_BIN=/opt/homebrew-cask/Caskroom/google-chrome/latest/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
-export FIREFOX_BIN="/opt/homebrew-cask/Caskroom/firefox/latest/Firefox.app/Contents/MacOS/firefox"
+# browser bin locations (used by Karma runner)
+export CHROME_BIN="$caskroom/google-chrome/latest/Google Chrome.app/Contents/MacOS/Google Chrome"
+export FIREFOX_BIN="$caskroom/firefox/latest/Firefox.app/Contents/MacOS/firefox"
 export PHANTOMJS_BIN="/usr/local/bin/phantomjs"
 export id=63130058
 export ID=63130058
-export sola=/Users/markogresak/Documents/Sola
-export dev=/Users/markogresak/Documents/dev
-export repos=/Users/markogresak/Documents/repositories
 export mgresak=ec2-user@mgresak.com
 export sshelp=root@sshelp.me
+# path to sublime packages
+export SUBL_PACKAGES="$HOME/Library/Application Support/Sublime Text 3/Packages"
+# coffee lint config file
 export COFFEELINT_CONFIG=~/.coffeelintrc
 export EDITOR=gvim
 export lalgec=s63130058@lalgec.fri.uni-lj.si
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+# local paths (used a lot)
+export sola=$HOME/Documents/Sola
+export dev=$HOME/Documents/dev
+export repos=$HOME/Documents/repositories
+# project path (used by cdproj function)
+export proj=""
+unset esPath
+unset caskroom
 export NODE_ENV="development"
 export MYVIMRC="~/.vimrc"
 alias npmr="npm run-script"
