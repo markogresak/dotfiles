@@ -122,6 +122,80 @@ cloneorg () {
   done;
 }
 
+github-init () {
+  # check if currently in repo
+  # if ! $(git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
+  #   # not in repo, use git init to start one
+  #   git init
+  # fi
+  # Test for GitHub credentials, fails if missing.
+  if [[ -z "$GITHUB_USERNAME" ]] || [[ -z "$GITHUB_TOKEN" ]]; then
+    >&2 echo 'Missing $GITHUB_USERNAME and/or $GITHUB_TOKEN. Aborted.'
+    return 1
+  fi
+
+  # Parse command line options.
+  # Reset in case getopts has been used previously in the shell.
+  OPTIND=1
+  # Get options `o` and `p`.
+  while getopts "op" opt; do
+    case "$opt" in
+      o) open_browser=1 ;;
+      p) private_repo=1 ;;
+    esac
+  done
+  # Shift opts back to start.
+  shift $((OPTIND-1)); [ "$1" = "--" ] && shift
+  # Return code, changes if error occurs.
+  local return_code=0
+  # Path to GitHub API for creating new repository.
+  local api_path="https://api.github.com/user/repos"
+  # Build string of <username>:<token> to auth on the API.
+  local api_auth="$GITHUB_USERNAME:$GITHUB_TOKEN"
+  # Determine repository name by current folder name.
+  local repo_name=$(basename $PWD)
+  # Set string for private repo attribute.
+  # API attribute defaults to false, set to true only with `-p` option.
+  if [[ $private_repo == 1 ]]; then private=', "private":"true"'; fi
+  # Request data string (JSON), API requires only repository name.
+  # All inputs: https://developer.github.com/v3/repos/#input
+  local data="{\"name\":\"$repo_name\" $private}"
+  # File to store reponse, parsed in case of error.
+  local tmp='.tmp-api-response'
+  # Perform request to API, write output to $tmp and store response http_code.
+  local response_code=$(curl -su "$api_auth" -d "$data" -o "$tmp" -w "%{http_code}" "$api_path")
+  # If response code is below 300 (OK code), request successfully created new repository.
+  # (Should respond with only 201 for success, but better be safe.)
+  if (( $response_code < 300 )); then
+    # Parse repository URL from response string, it's the last `html_url` attribute.
+    local url=$(cat $tmp | perl -ne 'print "$1\n" if /(?<="html_url": ")(.+?)(?=")/' | tail -1)
+    # Output repository name and URL.
+    echo -e "Successfuly created repository '$repo_name'\nURL: $url"
+    # Check if currently located in git repository.
+    if ! $(git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
+      # Not in git repository, use `git init` to initialise one.
+      echo "No git project present, initialising..."
+      git init
+    fi
+    # Add returned url as origin.
+    git remote add origin $url
+    # If option open_browser is set, open url in browser.
+    if [[ "$open_browser" == 1 ]]; then open $url; fi
+  # Repository creation failed.
+  else
+    # Output error messages from response.
+    m=$(cat $tmp | perl -ne 'print "$1: " if /(?<="message": ")(.+?)(?=")/' | rev | cut -c 3- | rev)
+    >&2 echo "Failed to create '$repo_name': $m"
+    # Set return code to 1 (error).
+    return_code=1
+  fi
+  # Remove response output file.
+  rm $tmp
+  # Exit with return_code, which is 0, unless error occured.
+  return $return_code
+}
+alias ghinit="github-init"
+
 travis-add-sauce () {
   # check for travis command
   command -v travis >/dev/null 2>&1 ||
