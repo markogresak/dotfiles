@@ -22,14 +22,10 @@ export ANDROID_HOME="/usr/local/Cellar/android-sdk/23.0.2"
 export CHROME_BIN="$caskroom/google-chrome/latest/Google Chrome.app/Contents/MacOS/Google Chrome"
 export FIREFOX_BIN="$caskroom/firefox/latest/Firefox.app/Contents/MacOS/firefox"
 export PHANTOMJS_BIN="/usr/local/bin/phantomjs"
-export id=63130058
-export ID=63130058
 # path to sublime packages
 export SUBL_PACKAGES="$HOME/Library/Application Support/Sublime Text 3/Packages"
 # coffee lint config file
 export COFFEELINT_CONFIG=~/.coffeelintrc
-export EDITOR=gvim
-export lalgec=s63130058@lalgec.fri.uni-lj.si
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 # local paths (used a lot)
@@ -40,10 +36,21 @@ export repos=$HOME/Documents/repositories
 export proj=""
 unset esPath
 unset caskroom
+
+## globally used variables
+# student id
+export id=63130058
+export ID=$id
+# servers
 export mgresak=ec2-user@gresak.io
 export gresakio=ec2-user@gresak.io
 export sshelp=root@sshelp.gresak.io
+export lalgec="s$ID@lalgec.fri.uni-lj.si"
+# node settings
 export NODE_ENV="development"
+export PORT=3000
+# editor settings
+export EDITOR=gvim
 export MYVIMRC="~/.vimrc"
 alias npmr="npm run-script"
 alias npi="npm install"
