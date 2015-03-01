@@ -1,6 +1,7 @@
 # global config, used by zsh and bash rc
 esPath="/Users/markogresak/Documents/dev/.emscripten_sdk"
 export PATH="$HOME/.node/bin:$HOME/.node/lib/node_modules:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/mongodb:/Users/markogresak/Library/Haskell/bin:"$esPath:$esPath/clang/e1.27.0_64bit:$esPath/node/0.10.18_64bit/bin:$esPath/emscripten/1.27.0""
+export NVM_DIR=~/.nvm
 unset esPath
 HISTFILESIZE=10000
 export ANDROID_HOME="/usr/local/Cellar/android-sdk/23.0.2"

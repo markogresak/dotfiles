@@ -140,3 +140,6 @@ travis-add-sauce () {
 
 # gulp completions
 eval "$(gulp --completion=zsh)"
+
+# load NVM (Node Version Manager) script
+source $(brew --prefix nvm)/nvm.sh
