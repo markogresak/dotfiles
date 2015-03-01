@@ -52,14 +52,17 @@ export PORT=3000
 # editor settings
 export EDITOR=gvim
 export MYVIMRC="~/.vimrc"
+
+## aliases
 alias npmr="npm run-script"
+# npm install
 alias npi="npm install"
 alias npis="npm install -S"
 alias npid="npm install -D"
 alias npig="npm install -g"
+# npm remove
 alias npr="npm rm"
 alias nprs="npm rm -S"
 alias nprd="npm rm -D"
 alias nprg="npm rm -g"
-alias gs="git status"
 
