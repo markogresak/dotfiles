@@ -113,7 +113,11 @@ cloneorg () {
   local PERL_SIGNALS="unsafe"
   for i in "$@"; do
     mkc $i
-    curl -s "https://api.github.com/orgs/$i/repos" | perl -ne '(system("zsh", "-c", "echo \"Cloning into \\\"$1\\\"...\"; { git clone -q https://github.com/$1 || exit 1 } &") == 0 or die "Error occured while cloning.") if /(?<="full_name"\: ")(.+?)(?=")/g; system("wait")'
+    curl -s "https://api.github.com/orgs/$i/repos" |
+      perl -ne '(system("zsh", "-c", "echo \"Cloning into \\\"$1\\\"...\";
+          { git clone -q https://github.com/$1 || exit 1 } &") == 0
+            or die "Error occured while cloning.")
+        if /(?<="full_name"\: ")(.+?)(?=")/g; system("wait")'
     cd ..
   done;
 }
