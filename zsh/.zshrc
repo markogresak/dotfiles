@@ -98,7 +98,7 @@ cdproj () {
   if [[ -n "$proj" ]]; then
     cd "$proj"
   else
-    echo 'Project variable $proj is not set!'
+    echo 'Project variable $proj is not set! Aborted.'
   fi
 }
 
