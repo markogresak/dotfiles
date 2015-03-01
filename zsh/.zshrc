@@ -115,5 +115,28 @@ cloneorg () {
   done;
 }
 
+travis-add-sauce () {
+  # check for travis command
+  command -v travis >/dev/null 2>&1 ||
+    { echo >&2 'Command travis is not installed. Use `gem install travis` to install it. Aborted.'; exit 1; }
+
+  # check for .travis.yml file
+  test -f .travis.yml ||
+    { echo >&2 'File .travis.yml not present. Use `travis init` and try again. Aborted.'; exit 1; }
+
+  grep -q "sauce_connect" .travis.yml &&
+    { echo >&2 'File .travis.yml already contains sauce_connect attribute. Aborted.'; exit 1; }
+
+  # check for sauce credentials
+  [[ -n "$SAUCE_USERNAME" ]] && [[ -n "$SAUCE_ACCESS_KEY" ]] ||
+    { echo >&2 'You forgot to set $SAUCE_USERNAME and/or $SAUCE_ACCESS_KEY variables. Check SauceLabs docs. Aborted.'; exit 1; }
+
+  echo 'Adding encrypted SAUCE_USERNAME and SAUCE_ACCESS_KEY globals to .travis.yml'
+  echo "addons:
+  sauce_connect: true" >> .travis.yml
+  travis encrypt SAUCE_USERNAME=$SAUCE_USERNAME --add
+  travis encrypt SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY --add
+}
+
 # gulp completions
 eval "$(gulp --completion=zsh)"
