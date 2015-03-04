@@ -32,6 +32,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 " javascript-syntax
 Plugin 'jelera/vim-javascript-syntax'
+" js beautify
+Plugin 'einars/js-beautify'
+Plugin 'maksimr/vim-jsbeautify'
 " JSON
 Plugin 'elzr/vim-json'
 " jshint
@@ -269,6 +272,9 @@ function! <SID>StripTrailingWhitespaces()
   let @/=_s
   call cursor(l, c)
 endfunction
+
+" jsbeautify
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 
 augroup configgroup
     autocmd!
