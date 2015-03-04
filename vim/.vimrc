@@ -46,6 +46,8 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'clausreinke/typescript-tools'
 " python
+" ropevim - vim refactoring
+"Plugin 'python-rope/ropevim'
 " pydoc support
 Plugin 'fs111/pydoc.vim'
 " ag, the silver searcher
