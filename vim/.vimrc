@@ -225,9 +225,6 @@ inoremap jj <esc>
 " insert a single character in normal mode
 :nmap <silent> ,s "=nr2char(getchar())<cr>P
 
-" toggle gundo
-nnoremap <leader>u :GundoToggle<CR>
-
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
