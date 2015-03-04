@@ -45,6 +45,9 @@ Plugin 'kchmck/vim-coffee-script'
 " typescript
 Plugin 'leafgarland/typescript-vim'
 Plugin 'clausreinke/typescript-tools'
+" python
+" pydoc support
+Plugin 'fs111/pydoc.vim'
 " ag, the silver searcher
 Plugin 'rking/ag.vim'
 " nerd commenter
