@@ -196,6 +196,43 @@ github-init () {
 }
 alias ghinit="github-init"
 
+git-open () {
+  # Display error message if not located in git repository.
+  if ! $(git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
+    >&2 echo "Not in git repository. Aborting."
+    return 1
+  fi
+  # Get first argument or use default of 'origin'.
+  local remote=${1:-origin}
+  # Export remote to be used with `$ENV` in perl.
+  export remote=$remote
+  # Set $match as:
+  #   list git remote(s),
+  #   pipe each line to perl, which executes:
+  #     get url of remote environment variable,
+  #     perform regex search on current line, returns match if
+  #       it starts with remote and ends with `(push)`
+  #     replace `:` in remote url with `/` (to get valid http url)
+  #     print url with prepended `http://` if regex search matched.
+  local match_url=$(git remote -v |
+  perl -ne '
+    my $remote = $ENV{'remote'};
+    my $match = (/(?<=$remote\sgit@)(.*)(?=\s\(push\))/);
+    my $url = $1 =~ s/:/\//r;
+    print "http://$url" if $match;')
+  # If match was successfuly set, open it in browser,
+  #   otherwise output an error message.
+  if [[ -n "$match_url" ]]; then
+    open "$match_url"
+  else
+    >&2 echo "No match for remote '$remote'."
+  fi
+  # Unset exported remote so it doesn't pollute global scope.
+  unset remote
+}
+alias gopn="git-open"
+alias gopen="git-open"
+
 travis-add-sauce () {
   # check for travis command
   command -v travis >/dev/null 2>&1 ||
