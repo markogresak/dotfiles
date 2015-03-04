@@ -28,8 +28,9 @@ Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/syntastic'
 " fuzzy finder
 Plugin 'kien/ctrlp.vim'
-" fugitive
+" git (fugitive)
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
 " javascript-syntax
 Plugin 'jelera/vim-javascript-syntax'
 " js beautify
