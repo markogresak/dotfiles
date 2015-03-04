@@ -63,7 +63,7 @@ Plugin 'ahayman/vim-nodejs-complete'
 " node debugger
 Plugin 'sidorares/node-vim-debugger'
 " autosave
-Plugin 'vim-scripts/vim-auto-save'
+"Plugin 'vim-scripts/vim-auto-save'
 " instant markdown preview
 Plugin 'suan/vim-instant-markdown'
 " Matching brackets
@@ -417,7 +417,7 @@ endif
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 
 " automatically save file while typing
-let g:auto_save=1
+"let g:auto_save=1
 " automatically read file if changed out of editor
 set autoread
 
