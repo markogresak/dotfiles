@@ -68,7 +68,7 @@ Plugin 'honza/vim-snippets'
 " coffeescript snippets
 Plugin 'carlosvillu/coffeScript-VIM-Snippets'
 " node support, completion with recognizing local modules
-Plugin '/moll/vim-node'
+Plugin 'moll/vim-node'
 Plugin 'ahayman/vim-nodejs-complete'
 " node debugger
 Plugin 'sidorares/node-vim-debugger'
