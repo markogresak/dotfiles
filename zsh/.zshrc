@@ -259,8 +259,8 @@ travis-add-sauce () {
     { echo >&2 'You forgot to set $SAUCE_USERNAME and/or $SAUCE_ACCESS_KEY variables. Check SauceLabs docs. Aborted.'; exit 1; }
 
   echo 'Adding encrypted SAUCE_USERNAME and SAUCE_ACCESS_KEY globals to .travis.yml'
-  echo "addons:
-  sauce_connect: true" >> .travis.yml
+  # echo "addons:
+  # sauce_connect: true" >> .travis.yml
   travis encrypt SAUCE_USERNAME=$SAUCE_USERNAME --add
   travis encrypt SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY --add
 }
