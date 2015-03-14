@@ -229,7 +229,7 @@ nnoremap gV `[v`]
 inoremap jj <esc>
 
 " insert a single character in normal mode
-:nmap <silent> ,s "=nr2char(getchar())<cr>P
+:nmap <silent> <leader>s "=nr2char(getchar())<cr>P
 
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
