@@ -106,6 +106,9 @@ filetype plugin indent on
 "" see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" leader is comma
+let mapleader=","
+
 " use molokai theme
 colorscheme molokai
 " use default molokai theme
@@ -141,8 +144,6 @@ set autoread
 
 syntax on
 
-" leader is comma
-let mapleader=","
 
 " tab width
 set tabstop=2
