@@ -66,6 +66,8 @@ alias npr="npm rm"
 alias nprs="npm rm -S"
 alias nprd="npm rm -D"
 alias nprg="npm rm -g"
+# octave cli
+alias octave="/Applications/Octave-cli.app/Contents/MacOS/Octave"
 
 ## config
 export LC_ALL=en_US.UTF-8
