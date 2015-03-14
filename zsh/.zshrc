@@ -212,14 +212,23 @@ git-open () {
   #     get url of remote environment variable,
   #     perform regex search on current line, returns match if
   #       it starts with remote and ends with `(push)`
-  #     replace `:` in remote url with `/` (to get valid http url)
-  #     print url with prepended `http://` if regex search matched.
+  #     if remote url starts with `s://`, leave it as is, otherwise
+  #       replace `:` in remote url with `/` (to get valid http url)
+  #     set prefix as `http` (http + s://github...), or as `http://`
+  #       if the url doesn't start with `s://` (i.e. git@github... url)
+  #     print url with prepended $prefix, if regex search matched.
   local match_url=$(git remote -v |
   perl -ne '
     my $remote = $ENV{'remote'};
-    my $match = (/(?<=$remote\sgit@)(.*)(?=\s\(push\))/);
-    my $url = $1 =~ s/:/\//r;
-    print "http://$url" if $match;')
+    my $match = (/(?<=$remote\s(git@|http))(.*)(?=\s\(push\))/);
+    my $url = $2;
+    my $prefix = "http";
+    # if $match stats with "s", treat it as https url instead of git@
+    if (index($url, "s://") != 0) {
+      $prefix = "http://";
+      $url = $url =~ s/:/\//r;
+    }
+    print "$prefix$url" if $match;')
   # If match was successfuly set, open it in browser,
   #   otherwise output an error message.
   if [[ -n "$match_url" ]]; then
