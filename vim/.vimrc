@@ -325,20 +325,9 @@ function! ToggleNumber()
     endif
 endfunc
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-"func! DeleteTrailingWS()
-  "exe "normal mz"
-  "%s/\s\+$//ge
-  "exe "normal `z"
-"endfunc
-"autocmd BufWrite *.* :call DeleteTrailingWS()
-
 if exists('&ofu') || exists('g:nodejs_complete_config')
   setlocal omnifunc=nodejscomplete#CompleteJS
 endif
-
-" activate powerline
-"call vam#ActivateAddons(['powerline'])
 
 " powerline config
 set guifont=Inconsolata-g\ for\ Powerline:h15
@@ -346,7 +335,6 @@ let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 set termencoding=utf-8
 set t_Co=256
-"set term=xterm-256color
 
 " macvim (gui mode) config
 if has("gui_running")
