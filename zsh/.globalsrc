@@ -15,6 +15,8 @@ PATH="$PATH:$HOME/Library/Haskell/bin"
 PATH="$PATH:$esPath:$esPath/clang/e1.27.0_64bit:$esPath/node/0.10.18_64bit/bin:$esPath/emscripten/1.27.0"
 # caskroom exports
 PATH="$PATH:$caskroom/vlc/2.1.4/VLC.app/Contents/MacOS"
+# latex
+PATH="$PATH:/usr/local/texlive/2014/bin/x86_64-darwin"
 export PATH=$PATH
 # android sdk
 export ANDROID_HOME="/usr/local/Cellar/android-sdk/23.0.2"
