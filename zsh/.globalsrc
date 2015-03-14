@@ -31,9 +31,10 @@ export COFFEELINT_CONFIG=~/.coffeelintrc
 # local paths (used a lot)
 export sola=$HOME/Documents/Sola
 export dev=$HOME/Documents/dev
+export gen=$HOME/Documents/genialis
 export repos=$HOME/Documents/repositories
 # project path (used by cdproj function)
-export proj=""
+export proj="$gen/genesis"
 unset esPath
 unset caskroom
 
