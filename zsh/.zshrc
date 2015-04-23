@@ -1,3 +1,4 @@
+### plugins on line :62
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -58,7 +59,7 @@ POWERLINE_NO_BLANK_LINE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-plugins=(git git-extras git-flow npm osx vagrant sudo web-search)
+plugins=(git git-extras git-flow brew npm bundler heroku vagrant sudo web-search osx)
 
 # User configuration
 
