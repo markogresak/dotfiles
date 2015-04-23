@@ -28,5 +28,9 @@
   "devel": true,
   "jquery": true,
   "node": true,
-  "mocha": true
+  "mocha": true,
+  "globals": {
+    "angular": true,
+    "_": true
+  }
 }
