@@ -14,6 +14,8 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'marcweber/vim-addon-manager'
 " editor config
 Plugin 'editorconfig/editorconfig-vim'
+" wakatime
+"Plugin 'wakatime/vim-wakatime'
 " powerline
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 " nerd tree
