@@ -37,7 +37,7 @@ Plugin 'tpope/vim-git'
 Plugin 'jelera/vim-javascript-syntax'
 " js beautify
 Plugin 'einars/js-beautify'
-Plugin 'maksimr/vim-jsbeautify'
+"Plugin 'maksimr/vim-jsbeautify'
 " JSON
 Plugin 'elzr/vim-json'
 " jshint
@@ -284,7 +284,6 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 " jsbeautify
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 
 augroup configgroup
     autocmd!
@@ -310,6 +309,7 @@ augroup configgroup
     autocmd BufEnter *.sh setlocal shiftwidth=2
     autocmd BufEnter *.sh setlocal softtabstop=2
 augroup END
+"autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
