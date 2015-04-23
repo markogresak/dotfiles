@@ -8,7 +8,7 @@ export NVM_DIR=~/.nvm
 # path to global npm packages
 export NPM_GLOBAL="$HOME/.node/lib/node_modules"
 # system and node/npm related paths
-PATH="$HOME/.node/bin:$NPM_GLOBAL:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/opt/mongodb"
+PATH="$HOME/.node/bin:$NPM_GLOBAL:/usr/local/opt:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/opt/mongodb"
 # Haskell
 PATH="$PATH:$HOME/Library/Haskell/bin"
 # emscripten
