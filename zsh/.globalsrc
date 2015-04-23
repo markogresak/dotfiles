@@ -27,7 +27,7 @@ export PHANTOMJS_BIN="/usr/local/bin/phantomjs"
 # path to sublime packages
 export SUBL_PACKAGES="$HOME/Library/Application Support/Sublime Text 3/Packages"
 # coffee lint config file
-export COFFEELINT_CONFIG=~/.coffeelintrc
+export COFFEELINT_CONFIG=~/coffeelint.json
 # local paths (used a lot)
 export sola=$HOME/Documents/Sola
 export dev=$HOME/Documents/dev
