@@ -43,8 +43,8 @@ unset caskroom
 export id=63130058
 export ID=$id
 # servers
-export mgresak=ec2-user@gresak.io
-export gresakio=ec2-user@gresak.io
+export mgresak=ubuntu@gresak.io
+export gresakio=ubuntu@gresak.io
 export sshelp=root@sshelp.gresak.io
 export lalgec="s$ID@lalgec.fri.uni-lj.si"
 # node settings
