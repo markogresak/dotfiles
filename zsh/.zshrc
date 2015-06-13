@@ -266,6 +266,10 @@ travis-add-sauce () {
   travis encrypt SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY --add
 }
 
+tsdi () {
+  tsd install $@ -s
+}
+
 # gulp completions
 eval "$(gulp --completion=zsh)"
 
