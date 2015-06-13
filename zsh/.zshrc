@@ -275,3 +275,7 @@ eval "$(gulp --completion=zsh)"
 
 # load NVM (Node Version Manager) script
 source $(brew --prefix nvm)/nvm.sh
+
+ . ~/.rvm/scripts/rvm
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+rvm reload >/dev/null 2>&1
