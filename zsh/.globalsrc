@@ -76,6 +76,8 @@ alias vgs="vagrant ssh"
 alias vgh="vagrant halt"
 alias vgd="vagrant destroy"
 alias vst="vagrant status"
+# github client
+alias gh="github"
 
 ## config
 export LC_ALL=en_US.UTF-8
