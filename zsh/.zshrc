@@ -69,7 +69,7 @@ plugins=(git git-extras git-flow brew npm bundler heroku vagrant sudo web-search
 source ~/.globalsrc
 source ~/.secretrc
 # powerline bindings
-source /Users/markogresak/Documents/dev/powerline/powerline/bindings/zsh/powerline.zsh
+# source /Users/markogresak/Documents/dev/powerline/powerline/bindings/zsh/powerline.zsh
 # history size
 HISTFILESIZE=10000
 
