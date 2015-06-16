@@ -78,6 +78,8 @@ alias vgd="vagrant destroy"
 alias vst="vagrant status"
 # github client
 alias gh="github"
+# ssh
+alias ssg="ssh $gresakio"
 
 ## config
 export LC_ALL=en_US.UTF-8
