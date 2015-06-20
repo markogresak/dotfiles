@@ -132,10 +132,10 @@ let g:syntastic_check_on_wq=0
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 " automatically run this every 200ms
-augroup syntastic
-    autocmd CursorHold * nested update
-augroup END
-set updatetime=200
+"augroup syntastic
+    "autocmd CursorHold * nested update
+"augroup END
+"set updatetime=200
 " map ,n as jump to next error
 nnoremap <leader>n :lnext<CR>
 
