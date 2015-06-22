@@ -168,21 +168,23 @@ endif
 " Ignore files
 set wildignore+=*.o,*~,*.pyc,*/\.git/*,*/tmp/*,*.so,*.swp,*.zip
 " Ignore files in .gitignore (if existant)
-let filename = '.gitignore'
-if filereadable(filename)
-    let igstring = ''
-    for oline in readfile(filename)
-        let line = substitute(oline, '\s|\n|\r', '', "g")
-        if line =~ '^#' | con | endif
-        if line == '' | con  | endif
-        if line =~ '^!' | con  | endif
-        if line =~ '/$' | let igstring .= "," . line . "*" | con | endif
-        let igstring .= "," . line
-    endfor
-    let execstring = "set wildignore+=".substitute(igstring, '^,', '', "g")
-    execute execstring
-endif
-
+try
+  let gitignorefile = '.gitignore'
+  if filereadable(gitignorefile)
+      let igstring = ''
+      for oline in readfile(gitignorefile)
+          let line = substitute(oline, '\s|\n|\r', '', "g")
+          if line =~ '^#' | con | endif
+          if line == '' | con  | endif
+          if line =~ '^!' | con  | endif
+          if line =~ '/$' | let igstring .= "," . line . "*" | con | endif
+          let igstring .= "," . line
+      endfor
+      let execstring = "set wildignore+=".substitute(igstring, '^,', '', "g")
+      execute execstring
+  endif
+catch
+endtry
 
 " redraw only when have to (e.g. don't do it during macros)
 set lazyredraw
