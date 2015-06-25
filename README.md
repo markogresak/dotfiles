@@ -4,7 +4,7 @@
 
 Config for [zsh][1].
 
-Using [oh-my-zsh][2], because it's awesome! And [powerline][3] theme, because it's cool and useful.
+Using [oh-my-zsh][2], because it's awesome! And [powerline][3] theme with both zsh command line and vim, because it's cool and useful.
 
 ### vim
 
