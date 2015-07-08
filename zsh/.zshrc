@@ -270,6 +270,11 @@ tsdi () {
   tsd install $@ -s
 }
 
+odt-to-pdf () {
+  ~/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf $@
+}
+alias odttopdf='odt-to-pdf'
+
 # gulp completions
 eval "$(gulp --completion=zsh)"
 
