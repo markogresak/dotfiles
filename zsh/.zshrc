@@ -271,7 +271,12 @@ tsdi () {
 }
 
 odttopdf () {
-  ~/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf $@
+  loDir="~/Applications/LibreOffice.app"
+  if [ -d "$loDir" ]; then
+    ~/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf $@
+  else
+    echo "LibreOffice not installed (Folder $loDir does not exist)."
+  fi
 }
 
 # gulp completions
