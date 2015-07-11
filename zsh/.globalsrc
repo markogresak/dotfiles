@@ -51,7 +51,7 @@ export lalgec="s$ID@lalgec.fri.uni-lj.si"
 export NODE_ENV="development"
 export PORT=3000
 # editor settings
-export EDITOR=gvim
+export EDITOR=vim
 export MYVIMRC="~/.vimrc"
 
 ## aliases
