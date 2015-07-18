@@ -7,6 +7,10 @@ caskroom="/opt/homebrew-cask/Caskroom"
 export NVM_DIR=~/.nvm
 # path to global npm packages
 export NPM_GLOBAL="$HOME/.node/lib/node_modules"
+# browser bin locations (used by Karma runner)
+export CHROME_BIN="$caskroom/google-chrome/latest/Google Chrome.app/Contents/MacOS/Google Chrome"
+export FIREFOX_BIN="$caskroom/firefox/latest/Firefox.app/Contents/MacOS/firefox"
+export PHANTOMJS_BIN="/usr/local/bin/phantomjs"
 # system and node/npm related paths
 PATH="$HOME/.node/bin:$NPM_GLOBAL:/usr/local/opt:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/opt/mongodb"
 # Haskell
@@ -15,6 +19,8 @@ PATH="$PATH:$HOME/Library/Haskell/bin"
 PATH="$PATH:$esPath:$esPath/clang/e1.27.0_64bit:$esPath/node/0.10.18_64bit/bin:$esPath/emscripten/1.27.0"
 # caskroom exports
 PATH="$PATH:$caskroom/vlc/2.1.4/VLC.app/Contents/MacOS"
+## firefox
+PATH="$PATH:$(dirname $FIREFOX_BIN)"
 # latex
 PATH="$PATH:/usr/local/texlive/2014/bin/x86_64-darwin"
 # postgres
@@ -22,10 +28,6 @@ PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
 export PATH=$PATH
 # android sdk
 export ANDROID_HOME="/usr/local/Cellar/android-sdk/23.0.2"
-# browser bin locations (used by Karma runner)
-export CHROME_BIN="$caskroom/google-chrome/latest/Google Chrome.app/Contents/MacOS/Google Chrome"
-export FIREFOX_BIN="$caskroom/firefox/latest/Firefox.app/Contents/MacOS/firefox"
-export PHANTOMJS_BIN="/usr/local/bin/phantomjs"
 # coffee lint config file
 export COFFEELINT_CONFIG=~/coffeelint.json
 # local paths (used a lot)
