@@ -18,6 +18,7 @@ PATH="$PATH:$HOME/Library/Haskell/bin"
 # emscripten
 PATH="$PATH:$esPath:$esPath/clang/e1.27.0_64bit:$esPath/node/0.10.18_64bit/bin:$esPath/emscripten/1.27.0"
 # caskroom exports
+## vlc
 PATH="$PATH:$caskroom/vlc/2.1.4/VLC.app/Contents/MacOS"
 ## firefox
 PATH="$PATH:$(dirname $FIREFOX_BIN)"
