@@ -81,6 +81,8 @@ alias vst="vagrant status"
 alias gh="github"
 # ssh
 alias ssg="ssh $gresakio"
+# atom
+alias atp="atom $proj"
 
 ## config
 export LC_ALL=en_US.UTF-8
