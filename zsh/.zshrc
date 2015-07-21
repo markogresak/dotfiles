@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 export TERM='xterm-256color'
 
 # Set name of the theme to load.
-ZSH_THEME="powerline"
+ZSH_THEME="agnoster"
 # INSTALL powerline fonts: https://github.com/powerline/fonts
 # If using iterm, disable
 #   Settings > Profile > Text > Treat ambigious characters as double width
