@@ -1,20 +1,19 @@
-### plugins on line :62
+#
+# iTerm config for mac:
+#2  Navigation:
+#   - Alt + left: Send Escape Sequence, Esc + b
+#   - Alt + right: Send Escape Sequence, Esc + f
+#   - Alt + backspace: Send Hex Code, 0×17
+#
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-export TERM='xterm-256color'
-
 # Set name of the theme to load.
-ZSH_THEME="agnoster"
 # INSTALL powerline fonts: https://github.com/powerline/fonts
 # If using iterm, disable
 #   Settings > Profile > Text > Treat ambigious characters as double width
-# Powerline readme: https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme
-POWERLINE_RIGHT_A="exit-status"
-POWERLINE_RIGHT_B="none"
-POWERLINE_HIDE_HOST_NAME="true"
-POWERLINE_HIDE_USER_NAME="true"
-POWERLINE_NO_BLANK_LINE="true"
+ZSH_THEME="agnoster"
+export TERM="xterm-256color"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -23,7 +22,7 @@ POWERLINE_NO_BLANK_LINE="true"
 ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -40,32 +39,14 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-plugins=(git git-extras git-flow brew npm cap vagrant sudo osx atom)
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
+plugins=(git git-extras sudo vagrant)
+# plugins=(git git-extras brew npm vagrant sudo osx atom)
 
 # PATH and other global variables
 source ~/.globalsrc
 source ~/.secretrc
-# powerline bindings
-# source /Users/markogresak/Documents/dev/powerline/powerline/bindings/zsh/powerline.zsh
 # history size
 HISTFILESIZE=10000
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # oh-my-zsh config
 source $ZSH/oh-my-zsh.sh
@@ -76,9 +57,10 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="subl ~/.zshrc"
-alias ohmyzsh="subl ~/.oh-my-zsh"
+alias zshconfig="atom ~/.zshrc"
+alias ohmyzsh="atom ~/.oh-my-zsh"
 
+# check for $proj value and cd if set.
 cdproj () {
   if [[ -n "$proj" ]]; then
     cd "$proj"
@@ -260,12 +242,6 @@ odttopdf () {
   fi
 }
 
-# gulp completions
-eval "$(gulp --completion=zsh)"
-
 # load NVM (Node Version Manager) script
-source $(brew --prefix nvm)/nvm.sh
-
- . ~/.rvm/scripts/rvm
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-rvm reload >/dev/null 2>&1
+source /usr/local/opt/nvm/nvm.sh
+nvm alias default iojs > /dev/null 2>&1
