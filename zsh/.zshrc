@@ -69,10 +69,12 @@ cdproj () {
   fi
 }
 
+# Make directory (with intermediate path) and cd into it.
 mkc () {
   mkdir -p "$@" && cd "$@"
 }
 
+# Clone all repositories of given github organisation into folder named after org.
 cloneorg () {
   local PERL_SIGNALS="unsafe"
   for i in "$@"; do
@@ -86,12 +88,18 @@ cloneorg () {
   done;
 }
 
+# Initialize github repo from current directory, add remote (calls git init if needed).
+# Environment variables GITHUB_USERNAME and GITHUB_TOKEN have to be set!
+# Token can be generated at github profile page, make sure to add correct permissions.
+# Requires `curl` (requests), `perl` (better regex support) and `open` (open in browser) commands.
+# All of these commands should be installed on OS X by default.
+#
+# Possible options and arguments:
+#  * [none]: public repository, name = same as current directory name
+#  * -p: private repository, name = same as current directory name
+#  * -o: open repository github page in browser after repository is created
+#
 github-init () {
-  # check if currently in repo
-  # if ! $(git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
-  #   # not in repo, use git init to start one
-  #   git init
-  # fi
   # Test for GitHub credentials, fails if missing.
   if [[ -z "$GITHUB_USERNAME" ]] || [[ -z "$GITHUB_TOKEN" ]]; then
     >&2 echo 'Missing $GITHUB_USERNAME and/or $GITHUB_TOKEN. Aborted.'
@@ -160,6 +168,8 @@ github-init () {
 }
 alias ghinit="github-init"
 
+# Open current repository remote in browser. Remote argument is optional, defaults to origin.
+# Requires `perl` (better regex support) and `open` (open in browser) commands.
 git-open () {
   # Display error message if not located in git repository.
   if ! $(git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
@@ -206,6 +216,9 @@ git-open () {
 alias gopn="git-open"
 alias gopen="git-open"
 
+# Add saucelabs credentials to .travis.yml file.
+# Environment variables SAUCE_USERNAME and SAUCE_ACCESS_KEY have to be set!
+# Requires `travis` (gem install travis) command.
 travis-add-sauce () {
   # check for travis command
   command -v travis >/dev/null 2>&1 ||
@@ -229,16 +242,19 @@ travis-add-sauce () {
   travis encrypt SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY --add
 }
 
+# Call tsd install and save installed package(s) to tsd.json file.
 tsdi () {
   tsd install $@ -s
 }
 
+# Convert libreoffice's .odt document(s) to pdf.
+# Requires LibreOffice installed/linked inside $HOME/Applications.
 odttopdf () {
-  loDir="~/Applications/LibreOffice.app"
-  if [ -d "$loDir" ]; then
+  libre_office_dir="~/Applications/LibreOffice.app"
+  if [ -d "$libre_office_dir" ]; then
     ~/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf $@
   else
-    echo "LibreOffice not installed (Folder $loDir does not exist)."
+    echo "LibreOffice not installed (Folder $libre_office_dir does not exist)."
   fi
 }
 
