@@ -50,6 +50,9 @@ alias nprd="npm rm -D"
 alias nprg="npm rm -g"
 # npm run-script
 alias nrs="npm run-script"
+alias nps="npm start"
+# npm init -y (yes to all)
+alias npii="npm init -y"
 # vagrant
 alias vgu="vagrant up"
 alias vgs="vagrant ssh"
