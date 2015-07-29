@@ -64,6 +64,8 @@ alias gh="github"
 # ssh
 alias ssg="ssh $gresakio"
 # atom
+alias at="atom"
+alias att="atom ."
 alias atp="atom $proj"
 
 ## config
