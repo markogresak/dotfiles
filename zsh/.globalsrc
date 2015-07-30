@@ -37,7 +37,6 @@ export EDITOR=vim
 export MYVIMRC="~/.vimrc"
 
 ## aliases
-alias npmr="npm run-script"
 # npm install
 alias npi="npm install"
 alias npis="npm install -S"
