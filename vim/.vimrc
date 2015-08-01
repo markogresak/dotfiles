@@ -21,7 +21,7 @@ Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 " nerd tree
 Plugin 'scrooloose/nerdtree'
 " YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 " emmet
 Plugin 'mattn/emmet-vim'
 " supertab - tab everything
