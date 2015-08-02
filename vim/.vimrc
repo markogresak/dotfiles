@@ -112,9 +112,9 @@ filetype plugin indent on
 let mapleader=","
 
 " use molokai theme
-colorscheme molokai
+" colorscheme molokai
 " use default molokai theme
-let g:molokai_original=1
+" let g:molokai_original=1
 let g:rehash256=1
 
 " syntastic config
