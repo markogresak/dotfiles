@@ -46,7 +46,7 @@ Plugin 'walm/jshint.vim'
 Plugin 'kchmck/vim-coffee-script'
 " typescript
 Plugin 'leafgarland/typescript-vim'
-Plugin 'clausreinke/typescript-tools'
+Plugin 'clausreinke/typescript-tools.vim'
 " python
 " ropevim - vim refactoring
 "Plugin 'python-rope/ropevim'
