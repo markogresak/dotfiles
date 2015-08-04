@@ -157,7 +157,9 @@ set expandtab
 set number
 
 " highlight current line
-set cursorline
+" set cursorline
+" :hi CursorLine   cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
+" :hi CursorColumn cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
 
 " visual autocomplete for command menu
 set wildmenu
