@@ -263,7 +263,7 @@ let g:ctrlp_custom_ignore={
   \ }
 
 " use pathogen
-call pathogen#infect()
+" call pathogen#infect()
 " call pathogen#runtime_append_all_bundles()
 
 " allows cursor change in tmux mode
