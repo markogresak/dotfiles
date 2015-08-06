@@ -311,8 +311,8 @@ if exists('&ofu') || exists('g:nodejs_complete_config')
 endif
 
 " powerline config
-set guifont=Inconsolata-g\ for\ Powerline:h15
-let g:Powerline_symbols = 'fancy'
+set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h15
+let g:Powerline_symbols='fancy'
 set encoding=utf-8
 set termencoding=utf-8
 set t_Co=256
