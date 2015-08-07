@@ -448,16 +448,3 @@ set rtp+=~/.node/lib/node_modules/typescript-tools/
 " typescript + syntastic
 let g:syntastic_typescript_tsc_args='--module commonjs --target ES5'
 
-" latex config
-" set working directory
-let g:latex_latexmk_build_dir = '.'
-" enable latexmk
-let g:latex_latexmk_enabled = 1
-" run latexmk in background
-let g:latex_latexmk_background = 1
-" use continious mode - compile every time latex file changes
-let g:latex_latexmk_continuous = 1
-" options passed to latexmk
-let g:latex_latexmk_options = '-pdf' " can also be set in `.latexmkrc` file
-" ignore warnings
-let g:latex_quickfix_ignore_all_warnings = 1
