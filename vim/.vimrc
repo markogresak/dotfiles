@@ -448,3 +448,8 @@ set rtp+=~/.node/lib/node_modules/typescript-tools/
 " typescript + syntastic
 let g:syntastic_typescript_tsc_args='--module commonjs --target ES5'
 
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<cr>
+"
+" " Disable paste mode when leaving insert mode
+autocmd InsertLeave * set nopaste
