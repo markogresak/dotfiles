@@ -73,6 +73,7 @@ cdproj () {
 mkc () {
   mkdir -p "$@" && cd "$@"
 }
+alias mcd="mkc"
 
 # Clone all repositories of given github organisation into folder named after org.
 cloneorg () {
