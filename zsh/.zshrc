@@ -46,7 +46,7 @@ plugins=(git git-extras npm sudo vagrant)
 source ~/.globalsrc
 source ~/.secretrc
 # history size
-HISTFILESIZE=10000
+HISTFILESIZE=25000
 
 # oh-my-zsh config
 source $ZSH/oh-my-zsh.sh
