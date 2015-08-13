@@ -253,7 +253,7 @@ tsdi () {
 odttopdf () {
   libre_office_dir="~/Applications/LibreOffice.app"
   if [ -d "$libre_office_dir" ]; then
-    ~/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf $@
+    "$libre_office_dir/Contents/MacOS/soffice" --headless --convert-to pdf $@
   else
     echo "LibreOffice not installed (Folder $libre_office_dir does not exist)."
   fi
