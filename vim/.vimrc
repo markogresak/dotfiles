@@ -89,6 +89,8 @@ Plugin 'plasticboy/vim-markdown'
 " latex
 Plugin 'lervag/vim-latex'
 "Plugin 'LaTeX-Box-Team/LaTeX-Box'
+" theme
+Plugin 'NLKNguyen/papercolor-theme'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " enable syntax processing
