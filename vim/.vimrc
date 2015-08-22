@@ -113,11 +113,15 @@ filetype plugin indent on
 " leader is comma
 let mapleader=","
 
-" use molokai theme
+" theme settings
 " colorscheme molokai
 " use default molokai theme
 " let g:molokai_original=1
+"syntax enable
+set background=dark
+colorscheme PaperColor
 let g:rehash256=1
+set t_Co=256
 
 " syntastic config
 let b:syntastic_mode='active'
