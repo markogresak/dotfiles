@@ -11,7 +11,7 @@ export CHROME_BIN="$HOME/Applications/Google Chrome.app/Contents/MacOS"
 export FIREFOX_BIN="$HOME/Applications/Firefox.app/Contents/MacOS"
 export PHANTOMJS_BIN="$NVM_BIN/phantomjs"
 # Add brew opt folder (bash, vim, gnutools) and Firefox folder (needed by Protractor).
-export PATH="$PATH:/usr/local/opt:$HOME/Applications/Firefox.app/Contents/MacOS:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app/Contents/MacOS:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 # local paths
 export sola=$HOME/Documents/Sola
 export dev=$HOME/Documents/dev
