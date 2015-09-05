@@ -292,7 +292,62 @@ favicons () {
   fi
 }
 
+# Convert mp3 file(s) into a single .m4a audiobook file.
+# Usage: mp3-to-audiobook [-o outfile] infile1 [infile2 [...]]
+# If outfile doesn't end in .m4a, it will be added automatically.
+# Defaults:
+#  - infiles: All *.mp3 files in current working directory.
+#  - outfile: {name of current working direcotry}.m4a.
+# Notes:
+#  - Outfile option (`-o {outfile}`) must be specified before infiles.
+#
+# Examples:
+# (assume we're in folder `test` with `file1.mp3, file2.mp3, file3.mp3`)
+#  - mp3-to-audiobook -o audiobook.m4a file1.mp3 file2.mp3 (convert `file1.mp3 + file2.mp3` into `audiobook.m4a`)
+#  - mp3-to-audiobook file1.mp3 file2.mp3 (convert `file1.mp3 + file2.mp3` into `test.m4a`)
+#  - mp3-to-audiobook -o audiobook.m4a *.mp3 (convert `file1.mp3 + file2.mp3 + file3.mp3` into `audiobook.m4a`)
+#  - mp3-to-audiobook (same as `mp3-to-audiobook -o $(basename $PWD) *.mp3`)
+#
+mp3-to-audiobook () {
+  # Check for ffmpeg command, exit if ti doesn't exist.
+  if ! command -v ffmpeg >/dev/null 2>&1; then
+    echo >&2 "Command 'ffmpeg' is required, please install it."
+    exit 1
   fi
+
+  # Set default output filename as current directory name.
+  outfile=$(basename $PWD)
+  # Parse arguments and check for -o (output file) argument.
+  OPTIND=1
+  while getopts "o" opt; do
+    case "$opt" in
+      o) outfile=$2 ;;
+    esac
+  done
+  # Shift opts to skip options arguments.
+  shift $((OPTIND-1)); [ "$1" = "--" ] && shift
+
+  # If output file doesn't end in .m4a file ext, add it.
+  if [[ "$outfile" != "*.m4a" ]]; then
+    outfile="${outfile}.m4a"
+  fi
+
+  # Set `infiles` to all arguments (except starting -o if it exists).
+  infiles="$@"
+  # If infiles is empty, then set files to all files in current directory with .mp3 extension.
+  if [ -z $infiles ]; then
+    infiles=(*.mp3)
+  fi
+
+  # Loop through all arguments and concat them into string `"concat:file_1|file_2|...|file_n|"`.
+  concat="concat:"
+  for file in $infiles; do
+    concat="${concat}$file|"
+  done
+  # Remove last `|` character from concat string.
+  concat="${concat%?}"
+  # Use `ffmpeg` to transform input .mp3 files into audiobook format.
+  ffmpeg -i "$concat" -c:a libfdk_aac -b:a 64k -f mp4 "$outfile"
 }
 
 # load NVM (Node Version Manager) script
