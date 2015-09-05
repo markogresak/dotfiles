@@ -310,8 +310,11 @@ favicons () {
 #
 mp3-to-audiobook () {
   # Check for ffmpeg command, exit if ti doesn't exist.
-  if ! command -v ffmpeggg >/dev/null 2>&1; then
-    echo >&2 "Command 'ffmpeg' is required, please install it."
+  if ! command -v ffmpeg >/dev/null 2>&1; then
+    text="Command 'ffmpeg' is required, please install it.\nIf on OS X, use:\n\n"
+    text="${text}brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-libass"
+    text="${text} --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265"
+    echo -e >&2 "$text"
   else
     # Set default output filename as current directory name.
     outfile=$(basename $PWD)
