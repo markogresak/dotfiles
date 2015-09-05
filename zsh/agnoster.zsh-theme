@@ -7,9 +7,9 @@ prompt_context() {
 # Dir: current working directory
 prompt_dir() {
   # Change: using only current folder name in dir name.
-  if [[ "$PWD" == "$HOME" ]]; then prompt_segment blue black '%~'
-  else prompt_segment blue black $(basename $PWD)
-  fi
+  local pwd="$(basename $PWD)"
+  [[ "$PWD" == "$HOME" ]] && pwd='%~'
+  prompt_segment blue black $pwd
 }
 
 ## Rest of agnoster source
