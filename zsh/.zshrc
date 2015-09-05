@@ -263,32 +263,35 @@ odttopdf () {
 favicons () {
   # Check for imagemagick's `convert` command.
   if ! command -v convert >/dev/null 2>&1; then
-    echo >&2 "Command 'convert' (imagemagick) is required, please install it.";
+    echo >&2 "Command 'convert' (imagemagick) is required, please install it."
+    exit 1
+  fi
+  # Check if source image argument was provided.
+  if [[ -z $1 ]]; then
+    echo >&2 "No source image in argument, aborting."
   else
-    # Check if source image argument was provided.
-    if [[ -z $1 ]]; then
-      echo >&2 "No source image in argument, aborting."
-    else
-      # Set variables as local so they don't escape in global environment.
-      local sizes sizes_all size images
-      # Regular sizes (for desktop browsers).
-      sizes=(16 24 32 48 64)
-      # Add sizes for mobile devices and iterate the whole array.
-      sizes_all=("${sizes[@]}" 57 72 114 120 144 152)
-      for size in $sizes_all; do
-        # Use convert to resize image to given format, the `>` means the operation will fail if the
-        # image would have to be stretched (oversized) to fit icon bounds.
-        convert "$1" -resize "${size}x${size}!>" "favicon-${size}.png"
-        # Add only names which are contained in original `sizes` array.
-        if [[ "${sizes[@]}" =~ "$size" ]]; then
-          images+=("favicon-${size}.png")
-        fi
-      done
-      # Combine original images into a single favicon.
-      convert $images "favicon.ico"
-      # Remove origianl images, there's no more use for them.
-      rm $images
-    fi
+    # Set variables as local so they don't escape in global environment.
+    local sizes sizes_all size images
+    # Regular sizes (for desktop browsers).
+    sizes=(16 24 32 48 64)
+    # Add sizes for mobile devices and iterate the whole array.
+    sizes_all=("${sizes[@]}" 57 72 114 120 144 152)
+    for size in $sizes_all; do
+      # Use convert to resize image to given format, the `>` means the operation will fail if the
+      # image would have to be stretched (oversized) to fit icon bounds.
+      convert "$1" -resize "${size}x${size}!>" "favicon-${size}.png"
+      # Add only names which are contained in original `sizes` array.
+      if [[ "${sizes[@]}" =~ "$size" ]]; then
+        images+=("favicon-${size}.png")
+      fi
+    done
+    # Combine original images into a single favicon.
+    convert $images "favicon.ico"
+    # Remove origianl images, there's no more use for them.
+    rm $images
+  fi
+}
+
   fi
 }
 
