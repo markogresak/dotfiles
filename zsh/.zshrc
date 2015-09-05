@@ -264,31 +264,31 @@ favicons () {
   # Check for imagemagick's `convert` command.
   if ! command -v convert >/dev/null 2>&1; then
     echo >&2 "Command 'convert' (imagemagick) is required, please install it."
-    exit 1
-  fi
-  # Check if source image argument was provided.
-  if [[ -z $1 ]]; then
-    echo >&2 "No source image in argument, aborting."
   else
-    # Set variables as local so they don't escape in global environment.
-    local sizes sizes_all size images
-    # Regular sizes (for desktop browsers).
-    sizes=(16 24 32 48 64)
-    # Add sizes for mobile devices and iterate the whole array.
-    sizes_all=("${sizes[@]}" 57 72 114 120 144 152)
-    for size in $sizes_all; do
-      # Use convert to resize image to given format, the `>` means the operation will fail if the
-      # image would have to be stretched (oversized) to fit icon bounds.
-      convert "$1" -resize "${size}x${size}!>" "favicon-${size}.png"
-      # Add only names which are contained in original `sizes` array.
-      if [[ "${sizes[@]}" =~ "$size" ]]; then
-        images+=("favicon-${size}.png")
-      fi
-    done
-    # Combine original images into a single favicon.
-    convert $images "favicon.ico"
-    # Remove origianl images, there's no more use for them.
-    rm $images
+    # Check if source image argument was provided.
+    if [[ -z $1 ]]; then
+      echo >&2 "No source image in argument, aborting."
+    else
+      # Set variables as local so they don't escape in global environment.
+      local sizes sizes_all size images
+      # Regular sizes (for desktop browsers).
+      sizes=(16 24 32 48 64)
+      # Add sizes for mobile devices and iterate the whole array.
+      sizes_all=("${sizes[@]}" 57 72 114 120 144 152)
+      for size in $sizes_all; do
+        # Use convert to resize image to given format, the `>` means the operation will fail if the
+        # image would have to be stretched (oversized) to fit icon bounds.
+        convert "$1" -resize "${size}x${size}!>" "favicon-${size}.png"
+        # Add only names which are contained in original `sizes` array.
+        if [[ "${sizes[@]}" =~ "$size" ]]; then
+          images+=("favicon-${size}.png")
+        fi
+      done
+      # Combine original images into a single favicon.
+      convert $images "favicon.ico"
+      # Remove origianl images, there's no more use for them.
+      rm $images
+    fi
   fi
 }
 
@@ -310,44 +310,43 @@ favicons () {
 #
 mp3-to-audiobook () {
   # Check for ffmpeg command, exit if ti doesn't exist.
-  if ! command -v ffmpeg >/dev/null 2>&1; then
+  if ! command -v ffmpeggg >/dev/null 2>&1; then
     echo >&2 "Command 'ffmpeg' is required, please install it."
-    exit 1
+  else
+    # Set default output filename as current directory name.
+    outfile=$(basename $PWD)
+    # Parse arguments and check for -o (output file) argument.
+    OPTIND=1
+    while getopts "o" opt; do
+      case "$opt" in
+        o) outfile=$2 ;;
+      esac
+    done
+    # Shift opts to skip options arguments.
+    shift $((OPTIND-1)); [ "$1" = "--" ] && shift
+
+    # If output file doesn't end in .m4a file ext, add it.
+    if [[ "$outfile" != "*.m4a" ]]; then
+      outfile="${outfile}.m4a"
+    fi
+
+    # Set `infiles` to all arguments (except starting -o if it exists).
+    infiles="$@"
+    # If infiles is empty, then set files to all files in current directory with .mp3 extension.
+    if [ -z $infiles ]; then
+      infiles=(*.mp3)
+    fi
+
+    # Loop through all arguments and concat them into string `"concat:file_1|file_2|...|file_n|"`.
+    concat="concat:"
+    for file in $infiles; do
+      concat="${concat}$file|"
+    done
+    # Remove last `|` character from concat string.
+    concat="${concat%?}"
+    # Use `ffmpeg` to transform input .mp3 files into audiobook format.
+    ffmpeg -i "$concat" -c:a libfdk_aac -b:a 64k -f mp4 "$outfile"
   fi
-
-  # Set default output filename as current directory name.
-  outfile=$(basename $PWD)
-  # Parse arguments and check for -o (output file) argument.
-  OPTIND=1
-  while getopts "o" opt; do
-    case "$opt" in
-      o) outfile=$2 ;;
-    esac
-  done
-  # Shift opts to skip options arguments.
-  shift $((OPTIND-1)); [ "$1" = "--" ] && shift
-
-  # If output file doesn't end in .m4a file ext, add it.
-  if [[ "$outfile" != "*.m4a" ]]; then
-    outfile="${outfile}.m4a"
-  fi
-
-  # Set `infiles` to all arguments (except starting -o if it exists).
-  infiles="$@"
-  # If infiles is empty, then set files to all files in current directory with .mp3 extension.
-  if [ -z $infiles ]; then
-    infiles=(*.mp3)
-  fi
-
-  # Loop through all arguments and concat them into string `"concat:file_1|file_2|...|file_n|"`.
-  concat="concat:"
-  for file in $infiles; do
-    concat="${concat}$file|"
-  done
-  # Remove last `|` character from concat string.
-  concat="${concat%?}"
-  # Use `ffmpeg` to transform input .mp3 files into audiobook format.
-  ffmpeg -i "$concat" -c:a libfdk_aac -b:a 64k -f mp4 "$outfile"
 }
 
 # load NVM (Node Version Manager) script
