@@ -329,8 +329,8 @@ mp3-to-audiobook () {
     shift $((OPTIND-1)); [ "$1" = "--" ] && shift
 
     # If output file doesn't end in .m4a file ext, add it.
-    if [[ "$outfile" != "*.m4a" ]]; then
-      outfile="${outfile}.m4a"
+    if [[ "$outfile" != "*.m4b" ]]; then
+      outfile="${outfile}.m4b"
     fi
 
     # Set `infiles` to all arguments (except starting -o if it exists).
