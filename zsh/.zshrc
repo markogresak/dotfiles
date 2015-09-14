@@ -347,8 +347,11 @@ mp3-to-audiobook () {
     done
     # Remove last `|` character from concat string.
     concat="${concat%?}"
+    # Set title as outfile name w/o file ext.
+    title=${outfile%.*}
     # Use `ffmpeg` to transform input .mp3 files into audiobook format.
-    ffmpeg -i "$concat" -c:a libfdk_aac -b:a 64k -f mp4 "$outfile"
+    ffmpeg -i "$concat" -metadata title="$title" -metadata genre="Audiobook" \
+      -c:a libfdk_aac -b:a 64k -f mp4 "$outfile"
   fi
 }
 
