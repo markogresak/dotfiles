@@ -357,7 +357,7 @@ mp3-to-audiobook () {
 
 # load NVM (Node Version Manager) script
 source /usr/local/opt/nvm/nvm.sh
-nvm alias default iojs > /dev/null 2>&1
+# nvm alias default iojs > /dev/null 2>&1
 
 source /Users/markogresak/.iterm2_shell_integration.zsh
 eval "$(rbenv init -)"
