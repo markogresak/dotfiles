@@ -1,0 +1,5 @@
+linters:
+  PropertySortOrder:
+    order: concentric
+  ColorVariable:
+    enabled: false
