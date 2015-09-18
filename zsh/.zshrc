@@ -309,6 +309,7 @@ favicons () {
 #  - mp3-to-audiobook (same as `mp3-to-audiobook -o $(basename $PWD) *.mp3`)
 #
 mp3-to-audiobook () {
+  local outfile infiles file len concat title
   # Check for ffmpeg command, exit if ti doesn't exist.
   if ! command -v ffmpeg >/dev/null 2>&1; then
     text="Command 'ffmpeg' is required, please install it.\nIf on OS X, use:\n\n"
@@ -341,12 +342,18 @@ mp3-to-audiobook () {
     fi
 
     # Loop through all arguments and concat them into string `"concat:file_1|file_2|...|file_n|"`.
+    len=0
     concat="concat:"
     for file in $infiles; do
       concat="${concat}$file|"
+      len=$((len + 1))
     done
-    # Remove last `|` character from concat string.
-    concat="${concat%?}"
+    
+    # If len is 1, set $infiles as only the ffmpeg input file,
+    #   otherwise use concat with remove last `|` character from the string.
+    # This is a fix to prevent concatenating files if there is only a single input file.
+    [[ "$len" == "1" ]] && concat="$infiles" || concat="${concat%?}"
+
     # Set title as outfile name w/o file ext.
     title=${outfile%.*}
     # Use `ffmpeg` to transform input .mp3 files into audiobook format.
