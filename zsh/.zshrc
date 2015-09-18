@@ -292,20 +292,20 @@ favicons () {
   fi
 }
 
-# Convert mp3 file(s) into a single .m4a audiobook file.
+# Convert mp3 file(s) into a single .m4b audiobook file.
 # Usage: mp3-to-audiobook [-o outfile] infile1 [infile2 [...]]
-# If outfile doesn't end in .m4a, it will be added automatically.
+# If outfile doesn't end in .m4b, it will be added automatically.
 # Defaults:
 #  - infiles: All *.mp3 files in current working directory.
-#  - outfile: {name of current working direcotry}.m4a.
+#  - outfile: {name of current working direcotry}.m4b.
 # Notes:
 #  - Outfile option (`-o {outfile}`) must be specified before infiles.
 #
 # Examples:
 # (assume we're in folder `test` with `file1.mp3, file2.mp3, file3.mp3`)
-#  - mp3-to-audiobook -o audiobook.m4a file1.mp3 file2.mp3 (convert `file1.mp3 + file2.mp3` into `audiobook.m4a`)
-#  - mp3-to-audiobook file1.mp3 file2.mp3 (convert `file1.mp3 + file2.mp3` into `test.m4a`)
-#  - mp3-to-audiobook -o audiobook.m4a *.mp3 (convert `file1.mp3 + file2.mp3 + file3.mp3` into `audiobook.m4a`)
+#  - mp3-to-audiobook -o audiobook.m4b file1.mp3 file2.mp3 (convert `file1.mp3 + file2.mp3` into `audiobook.m4b`)
+#  - mp3-to-audiobook file1.mp3 file2.mp3 (convert `file1.mp3 + file2.mp3` into `test.m4b`)
+#  - mp3-to-audiobook -o audiobook.m4b *.mp3 (convert `file1.mp3 + file2.mp3 + file3.mp3` into `audiobook.m4b`)
 #  - mp3-to-audiobook (same as `mp3-to-audiobook -o $(basename $PWD) *.mp3`)
 #
 mp3-to-audiobook () {
@@ -328,7 +328,7 @@ mp3-to-audiobook () {
     # Shift opts to skip options arguments.
     shift $((OPTIND-1)); [ "$1" = "--" ] && shift
 
-    # If output file doesn't end in .m4a file ext, add it.
+    # If output file doesn't end in .m4b file ext, add it.
     if [[ "$outfile" != "*.m4b" ]]; then
       outfile="${outfile}.m4b"
     fi
