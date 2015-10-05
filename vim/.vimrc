@@ -459,3 +459,9 @@ map <leader>pp :setlocal paste!<cr>
 "
 " " Disable paste mode when leaving insert mode
 autocmd InsertLeave * set nopaste
+
+" Enable spell check (`z=` to show corrections)
+set spell spelllang=en_us
+" Use c-N in insert mode to complete word
+set complete+=kspell
+"map ^L <Esc>1z=
