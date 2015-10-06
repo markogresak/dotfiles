@@ -367,3 +367,5 @@ source /usr/local/opt/nvm/nvm.sh
 
 source "$HOME/.iterm2_shell_integration.zsh"
 # eval "$(rbenv init -)"
+
+[ -s "$HOME/.dnx/dnvm/dnvm.sh" ] && . "$HOME/.dnx/dnvm/dnvm.sh" # Load dnvm
