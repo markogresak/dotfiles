@@ -1,15 +1,13 @@
-/usr/local/Cellar/nvm/0.26.1/versions/node/v4.1.1/lib
+/usr/local/Cellar/nvm/0.26.1/versions/node/v4.2.0/lib
 ├── babel@5.8.23
-├── eslint@1.5.1
-├── eslint-config-airbnb@0.0.8
-├── eslint-plugin-react@3.4.2
-├── gulp-gh-pages@0.5.2
-├── http-server@0.8.4
-├── jaws-framework@1.0.1
+├── eslint@1.6.0
+├── eslint-config-airbnb@0.1.0
+├── eslint-plugin-react@3.5.1
+├── http-server@0.8.5
 ├── mocha@2.3.3
-├── npm@2.14.4
-├── npm-check-updates@2.2.3
-├── speed-test@1.1.0
-├── tsd@0.6.4
+├── npm@2.14.7
+├── npm-check-updates@2.3.2
+├── speed-test@1.5.0
+├── tsd@0.6.5
 └── typescript@1.6.2
 

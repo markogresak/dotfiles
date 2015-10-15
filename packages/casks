@@ -1,16 +1,19 @@
 alfred
 atom
 betterzipql
-cleanmymac
+calibre
+caprine
 coconutbattery
 dropbox
 firefox
 flux
-github (!)
-gitter
+ginbox
+github-desktop
 gitup
 gitx
 google-chrome
+google-chrome-canary
+hacker-menu
 intellij-idea
 istat-menus
 iterm2-nightly
@@ -22,7 +25,9 @@ linein
 mac2imgur
 magicprefs
 mailbox
-paragon-ntfs
+messenger
+paw
+postgres
 qlcolorcode
 qlimagesize
 qlmarkdown
@@ -47,5 +52,6 @@ visual-studio-code
 vlc
 vmware-fusion
 webpquicklook
+whatpulse
 wineskin-winery
 xquartz
