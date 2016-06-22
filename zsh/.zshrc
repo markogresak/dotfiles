@@ -60,6 +60,31 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="atom ~/.zshrc"
 alias ohmyzsh="atom ~/.oh-my-zsh"
 
+# set different color when in ssh
+# function change-tab-color() {
+#   echo -e "\033]6;1;bg;red;brightness;$1\a"
+#   echo -e "\033]6;1;bg;green;brightness;$2\a"
+#   echo -e "\033]6;1;bg;blue;brightness;$3\a"
+# }
+# function change-profile() {
+#   echo -e "\033]50;SetProfile=$1\a"
+# }
+# function reset-colors() {
+#   echo -e "\033]6;1;bg;*;Default\a"
+#   change-profile Default
+# }
+# function colorssh() {
+#   if [[ -n "$ITERM_SESSION_ID" ]]; then
+#     trap "reset-colors" INT EXIT
+#     # if [[ "$*" =~ "web*|production|ec2-.*compute-1" ]]; then
+#       change-profile SSH
+#       change-tab-color 255 0 0
+#     # fi
+#   fi
+#   ssh $*
+# }
+# alias ssh="colorssh"
+
 # check for $proj value and cd if set.
 cdproj () {
   if [[ -n "$proj" ]]; then
@@ -251,7 +276,7 @@ tsdi () {
 # Convert libreoffice's .odt document(s) to pdf.
 # Requires LibreOffice installed/linked inside $HOME/Applications.
 odttopdf () {
-  libre_office_dir="~/Applications/LibreOffice.app"
+  libre_office_dir=~/Applications/LibreOffice.app
   if [ -d "$libre_office_dir" ]; then
     "$libre_office_dir/Contents/MacOS/soffice" --headless --convert-to pdf $@
   else
@@ -348,7 +373,7 @@ mp3-to-audiobook () {
       concat="${concat}$file|"
       len=$((len + 1))
     done
-    
+
     # If len is 1, set $infiles as only the ffmpeg input file,
     #   otherwise use concat with remove last `|` character from the string.
     # This is a fix to prevent concatenating files if there is only a single input file.
@@ -362,6 +387,32 @@ mp3-to-audiobook () {
   fi
 }
 
+# Pull all branches from specified remote (defaults to "origin").
+# Usage: git-pull-all [remote]
+# Examples:
+#  Use origin as remote: git-pull-all
+#  Use upstream as remote: git-pull-all upstream
+git-pull-all () {
+  local remote allowed_remotes remote_branch
+
+  # Get specified remote or default to origin.
+  remote="${1:-origin}"
+
+  # List remote-tracking branches, invert grep to match just text (skip colors),
+  # then read each branch, regex-match it against allowed_remotes and
+  # if it matches, create new branch and tell it to track corresponding remote branch.
+  git branch --remotes | grep -v '\->' | while read remote_branch; do
+    if [[ $remote_branch =~ "^$remote.*" ]]; then
+      git branch --track "${remote_branch#$remote/}" "$remote_branch"
+    fi
+  done
+
+  echo "Fetching from $remote"
+  git fetch "$remote"
+}
+
+alias glal=git-pull-all
+
 # load NVM (Node Version Manager) script
 source /usr/local/opt/nvm/nvm.sh
 
@@ -369,3 +420,7 @@ source "$HOME/.iterm2_shell_integration.zsh"
 # eval "$(rbenv init -)"
 
 [ -s "$HOME/.dnx/dnvm/dnvm.sh" ] && . "$HOME/.dnx/dnvm/dnvm.sh" # Load dnvm
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+alias gsta="git stash"

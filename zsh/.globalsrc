@@ -7,18 +7,22 @@
 
 # path to global npm packages
 # browser bin locations (used by Karma runner)
-export CHROME_BIN="$HOME/Applications/Google Chrome.app/Contents/MacOS"
+export CHROME_BIN="$HOME/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 export FIREFOX_BIN="$HOME/Applications/Firefox.app/Contents/MacOS"
 export PHANTOMJS_BIN="$NVM_BIN/phantomjs"
 # Add brew opt folder (bash, vim, gnutools) and Firefox folder (needed by Protractor).
 export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app/Contents/MacOS:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 # local paths
 export sola=$HOME/Documents/Sola
+export tpo=$sola/3.letnik/TPO/TPO-zdravstveni-IS
 export dev=$HOME/Documents/dev
 export gen=$HOME/Documents/genialis
 export repos=$HOME/Documents/repositories
 # path to project folder
-export proj="$gen/genesis"
+export proj="$HOME/Documents/defactto/collaboration_analytics/frontend"
+
+alias vpnii="cd $proj/../forticlient-gateway && ./startVPN"
+alias initvpn="vpnii"
 
 ## globally used variables
 # student id
@@ -28,7 +32,7 @@ export ID=$id
 export mgresak=ubuntu@gresak.io
 export gresakio=ubuntu@gresak.io
 export sshelp=root@sshelp.gresak.io
-export lalgec="s$ID@lalgec.fri.uni-lj.si"
+export lalgec="u$ID@lalgec.fri.uni-lj.si"
 # node settings
 export NODE_ENV="development"
 export PORT=3000
@@ -57,7 +61,12 @@ alias vgu="vagrant up"
 alias vgs="vagrant ssh"
 alias vgh="vagrant halt"
 alias vgd="vagrant destroy"
+alias vgddd="vagrant destroy -f"
 alias vst="vagrant status"
+#git
+alias gcd="git checkout develop"
+alias gfr="git fresh"
+alias gsta="git stash"
 # github client
 alias gh="github"
 # ssh
@@ -66,7 +75,10 @@ alias ssg="ssh $gresakio"
 alias at="atom"
 alias att="atom ."
 alias atp="atom $proj"
+# merge pdf (OS X)
+alias mergepdf="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
 
 ## config
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
