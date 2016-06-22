@@ -22,6 +22,7 @@ fftw
 flow
 fontconfig
 freetype
+frei0r
 fribidi
 gcc
 gd
@@ -45,6 +46,7 @@ gnuplot
 gnutls
 gobject-introspection
 goffice
+gpac
 graphicsmagick
 graphviz
 grep
@@ -66,6 +68,7 @@ jpeg
 lame
 libass
 libcroco
+libdv
 libepoxy
 libevent
 libffi
@@ -79,6 +82,7 @@ libogg
 libpng
 libquvi
 librsvg
+libsamplerate
 libtasn1
 libtiff
 libtool
@@ -91,10 +95,12 @@ libxml2
 libyaml
 little-cms2
 lua
+mad
 makedepend
 mariadb
 maven
 md5sha1sum
+mlt
 mono
 mp3info
 mpfr
@@ -112,6 +118,7 @@ php56
 pixman
 pkg-config
 plotutils
+popt
 postgresql
 pstoedit
 pyqt
@@ -132,6 +139,7 @@ sdl
 siege
 sip
 sloccount
+sox
 sqlite
 suite-sparse421
 szip
