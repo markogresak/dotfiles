@@ -2,13 +2,13 @@
 
 ### zsh
 
-Config for [zsh][1].
+Config for [zsh][zsh].
 
-Using [oh-my-zsh][2], because it's awesome! And [powerline][3] theme with both zsh command line and vim, because it's cool and useful.
+Using [oh-my-zsh][oh-my-zsh], because it's awesome! And customized agnoster theme, inspired by powerline, because it's cool and useful.
 
 ### vim
 
-Vim config bundled with [Vundle][4] and [molokai][5] theme. Also some useful things in `.vimrc`.
+Vim config bundled with [Vundle][vundle] and [molokai][molokai] theme. Also some useful things in `.vimrc`.
 
 ### git
 
@@ -16,24 +16,38 @@ Global config files for git. `.gitignore` ignoring common OS and editor files.
 
 ### editor
 
-[EditorConfig][6] file, shared between editors.
+[EditorConfig][editorconfig] file, shared between editors.
 
 ### js
 
-Config for JavaScript linters, [JSHint][7] and [JSCS][8] (JavaScript Code Style).
+Config for JavaScript linter [ESLint][eslint].
+
+### typescript
+
+Config files for TypeScript linter [TSLint][tslint].
 
 ### coffee
 
-Config for CoffeeScript linter [CoffeeLint][9].
+Config for CoffeeScript linter [CoffeeLint][coffeelint].
+
+### css
+
+Config files for [SCSS linter][scss-lint].
+
+### packages
+
+Lists of packages and apps installed via [Homebrew][brew], [Homebrew Cask][cask] and [npm][npm].
 
 
-  [1]: http://www.zsh.org/
-  [2]: https://github.com/robbyrussell/oh-my-zsh
-  [3]: https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme
-  [4]: https://github.com/gmarik/Vundle.vim
-  [5]: https://github.com/tomasr/molokai
-  [6]: http://editorconfig.org/
-  [7]: http://jshint.com/about/
-  [8]: http://jscs.info/
-  [9]: http://www.coffeelint.org/
-
+  [zsh]: http://www.zsh.org/
+  [oh-my-zsh]: https://github.com/robbyrussell/oh-my-zsh
+  [vundle]: https://github.com/gmarik/Vundle.vim
+  [molokai]: https://github.com/tomasr/molokai
+  [editorconfig]: http://editorconfig.org/
+  [eslint]: http://eslint.org/
+  [tslint]: http://palantir.github.io/tslint/
+  [coffeelint]: http://www.coffeelint.org/
+  [scss-lint]: https://github.com/brigade/scss-lint
+  [brew]: http://brew.sh/
+  [cask]: https://caskroom.github.io/
+  [npm]: https://www.npmjs.com/
