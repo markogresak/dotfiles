@@ -1,7 +1,7 @@
 #!/bin/bash
-# Homebrew
+echo 'Updating Homebrew...'
 brew list -1 > brew
-# Homebrew Cask
+echo 'Updating Homebrew Cask...'
 brew cask list -1 > casks
-# npm global modules
+echo 'Updating npm global modules...'
 npm ls -g --depth 0 | grep -oP '(?<= ).*' > npm
