@@ -3,3 +3,14 @@ linters:
     order: concentric
   ColorVariable:
     enabled: false
+  LeadingZero:
+    enabled: false
+  SelectorDepth:
+    max_depth: 4
+  NestingDepth:
+    max_depth: 6
+  StringQuotes:
+    enabled: false
+  ImportantRule:
+    enabled: false
+
