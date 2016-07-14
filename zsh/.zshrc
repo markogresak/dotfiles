@@ -94,6 +94,16 @@ cdproj () {
   fi
 }
 
+cddev () {
+  if [[ -n "$dev" ]]; then
+    cd "$dev"
+  else
+    echo 'Project variable $dev is not set! Aborted.'
+  fi
+}
+
+alias ...="cd \$OLDPWD"
+
 # Make directory (with intermediate path) and cd into it.
 mkc () {
   mkdir -p "$@" && cd "$@"
