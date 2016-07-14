@@ -12,7 +12,7 @@ function update_cask {
 
 function update_npm {
   echo 'Updating npm global modules...'
-  npm ls -g --depth 0 | grep -oP '(?<= ).*' > npm
+  npm ls -g --depth 0 | grep '@' | cut -d' ' -f2 > npm
 }
 
 function update_atom {
