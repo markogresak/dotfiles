@@ -208,7 +208,18 @@ alias ghinit="github-init"
 
 # Open current repository remote in browser. Remote argument is optional, defaults to origin.
 # Requires `perl` (better regex support) and `open` (open in browser) commands.
+# Can add option -b to open current branch
 git-open () {
+  open_branch=0
+  # Get options `o` and `p`.
+  while getopts "b" opt; do
+    case "$opt" in
+      b) open_branch=1 ;;
+    esac
+  done
+  # Shift opts back to start.
+  shift $((OPTIND-1)); [ "$1" = "--" ] && shift
+
   # Display error message if not located in git repository.
   if ! $(git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
     >&2 echo "Not in git repository. Aborting."
@@ -243,8 +254,17 @@ git-open () {
     print "$prefix$url" if $match;')
   # If match was successfuly set, open it in browser,
   #   otherwise output an error message.
+
+  # Make request to matching url, find last location and trim trailing spaces.
+  resolved_url=$(curl -sLI "$match_url" | grep 'Location:' | cut -d' ' -f2 | tail -1 | sed -e 's/[[:space:]]*$//')
+
   if [[ -n "$match_url" ]]; then
-    open "$match_url"
+    if [[ "$open_branch" == 1 ]]; then
+      current_branch=$(git rev-parse --abbrev-ref HEAD)
+      open "$resolved_url/tree/$current_branch"
+    else
+      open "$resolved_url"
+    fi
   else
     >&2 echo "No match for remote '$remote'."
   fi
@@ -252,7 +272,7 @@ git-open () {
   unset remote
 }
 alias gopn="git-open"
-alias gopen="git-open"
+alias gopnn="git-open -b"
 
 # Add saucelabs credentials to .travis.yml file.
 # Environment variables SAUCE_USERNAME and SAUCE_ACCESS_KEY have to be set!
