@@ -109,6 +109,8 @@ mkc () {
   mkdir -p "$@" && cd "$@"
 }
 alias mcd="mkc"
+alias cmkdir="mkc"
+alias mkdirc="mkc"
 
 # Clone all repositories of given github organisation into folder named after org.
 cloneorg () {
