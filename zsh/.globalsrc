@@ -13,15 +13,10 @@ export PHANTOMJS_BIN="$NVM_BIN/phantomjs"
 # Add brew opt folder (bash, vim, gnutools) and Firefox folder (needed by Protractor).
 export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app/Contents/MacOS"
 # local paths
-export tpo=$sola/3.letnik/TPO/TPO-zdravstveni-IS
-export gen=$HOME/Documents/genialis
 export sola="$HOME/MEGA/sola"
 export dev="$HOME/MEGA/projects"
 export repos="$HOME/MEGA/projects"
 # path to project folder
-
-alias vpnii="cd $proj/../forticlient-gateway && ./startVPN"
-alias initvpn="vpnii"
 export proj="$HOME/MEGA/dlabs"
 
 ## globally used variables
@@ -81,4 +76,3 @@ alias mergepdf="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Re
 ## config
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-
