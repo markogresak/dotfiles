@@ -7,8 +7,8 @@
 
 # path to global npm packages
 # browser bin locations (used by Karma runner)
-export CHROME_BIN="$HOME/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-export FIREFOX_BIN="$HOME/Applications/Firefox.app/Contents/MacOS"
+export CHROME_BIN="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+export FIREFOX_BIN="/Applications/Firefox.app/Contents/MacOS"
 export PHANTOMJS_BIN="$NVM_BIN/phantomjs"
 # Add brew opt folder (bash, vim, gnutools) and Firefox folder (needed by Protractor).
 export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app/Contents/MacOS:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
