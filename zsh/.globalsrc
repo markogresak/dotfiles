@@ -65,7 +65,7 @@ alias gsta="git stash"
 # github client
 alias gh="github"
 # ssh
-alias ssg="ssh $gresakio"
+alias ssg="ssh gresakio"
 # atom
 alias at="atom"
 alias att="atom ."

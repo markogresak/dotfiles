@@ -227,38 +227,17 @@ git-open () {
   fi
   # Get first argument or use default of 'origin'.
   local remote=${1:-origin}
-  # Export remote to be used with `$ENV` in perl.
-  export remote=$remote
-  # Set $match as:
-  #   list git remote(s),
-  #   pipe each line to perl, which executes:
-  #     get url of remote environment variable,
-  #     perform regex search on current line, returns match if
-  #       it starts with remote and ends with `(push)`
-  #     if remote url starts with `s://`, leave it as is, otherwise
-  #       replace `:` in remote url with `/` (to get valid http url)
-  #     set prefix as `http` (http + s://github...), or as `http://`
-  #       if the url doesn't start with `s://` (i.e. git@github... url)
-  #     print url with prepended $prefix, if regex search matched.
-  local match_url=$(git remote -v |
-  perl -ne '
-    my $remote = $ENV{'remote'};
-    my $match = (/(?<=$remote\s(git@|http))(.*)(?=\s\(push\))/);
-    my $url = $2;
-    my $prefix = "http";
-    # if $match stats with "s", treat it as https url instead of git@
-    if (index($url, "s://") != 0) {
-      $prefix = "http://";
-      $url = $url =~ s/:/\//r;
-    }
-    print "$prefix$url" if $match;')
-  # If match was successfuly set, open it in browser,
-  #   otherwise output an error message.
-
+  # get push url for remote, pipe to sed is used to fix SSH urls
+  local match_url=$(git remote get-url --push $remote | sed -e 's/git@//' | sed -Ee 's/(\..+):/\1\//')
+  # If match was successfuly set, open it in browser, otherwise output an error message.
   # Make request to matching url, find last location and trim trailing spaces.
   resolved_url=$(curl -sLI "$match_url" | grep 'Location:' | cut -d' ' -f2 | tail -1 | sed -e 's/[[:space:]]*$//')
+  # if resolved_url not found, fall back to match_url
+  if [[ -z "$resolved_url" ]]; then
+    resolved_url="$match_url"
+  fi
 
-  if [[ -n "$match_url" ]]; then
+  if [[ -n "$resolved_url" ]]; then
     if [[ "$open_branch" == 1 ]]; then
       current_branch=$(git rev-parse --abbrev-ref HEAD)
       open "$resolved_url/tree/$current_branch"
@@ -271,8 +250,8 @@ git-open () {
   # Unset exported remote so it doesn't pollute global scope.
   unset remote
 }
-alias gopn="git-open"
-alias gopnn="git-open -b"
+alias gopnn="git-open"
+alias gopn="git-open -b"
 
 # Add saucelabs credentials to .travis.yml file.
 # Environment variables SAUCE_USERNAME and SAUCE_ACCESS_KEY have to be set!
@@ -455,4 +434,4 @@ source "$HOME/.iterm2_shell_integration.zsh"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-alias gsta="git stash"
+alias grep="ggrep"
