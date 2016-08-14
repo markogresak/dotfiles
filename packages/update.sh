@@ -15,13 +15,7 @@ function update_npm {
   npm ls -g --depth 0 | grep '@' | cut -d' ' -f2 > npm
 }
 
-function update_atom {
-  echo 'Updating atom packages...'
-  apm list --installed --bare > atom
-}
-
 update_brew &
 update_cask &
 update_npm &
-update_atom &
 wait
