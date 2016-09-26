@@ -56,7 +56,6 @@ alias vgu="vagrant up"
 alias vgs="vagrant ssh"
 alias vgh="vagrant halt"
 alias vgd="vagrant destroy"
-alias vgddd="vagrant destroy -f"
 alias vst="vagrant status"
 #git
 alias gcd="git checkout develop"
@@ -64,6 +63,7 @@ alias gfr="git fresh"
 alias gsta="git stash"
 # github client
 alias gh="github"
+alias gh.="github ."
 # ssh
 alias ssg="ssh gresakio"
 # atom

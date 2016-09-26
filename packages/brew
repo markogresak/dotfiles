@@ -4,8 +4,10 @@ autoconf
 automake
 binutils
 boost
+chrome-cli
 coreutils
 diff-so-fancy
+dinghy
 elixir
 erlang
 ffmpeg
@@ -15,6 +17,7 @@ gawk
 gcc
 gdbm
 gettext
+gifsicle
 gist
 git
 git-extras
@@ -31,6 +34,7 @@ gnupg
 gnutls
 grep
 highlight
+htop
 isl
 jpeg
 lame
@@ -45,6 +49,7 @@ libtool
 libyaml
 lua
 mpfr
+mysql
 nettle
 openssl
 pandoc
@@ -60,6 +65,7 @@ translate-shell
 tree
 unar
 uncrustify
+unfs3
 unrar
 vim
 watch

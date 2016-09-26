@@ -4,7 +4,11 @@ atom
 audacity
 betterzipql
 caprine
+cleartext
 coconutbattery
+discord
+docker
+docker-toolbox
 dropbox
 firefox
 flux
@@ -13,6 +17,7 @@ gitx
 google-chrome
 google-chrome-canary
 hyperterm
+imageoptim
 istat-menus
 iterm2-nightly
 jumpcut
@@ -20,6 +25,7 @@ linein
 little-snitch
 megasync
 postgres
+postico
 qlcolorcode
 qlimagesize
 qlmarkdown

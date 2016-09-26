@@ -19,11 +19,11 @@ Plugin 'editorconfig/editorconfig-vim'
 " powerline
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 " nerd tree
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
 " YouCompleteMe
 " Plugin 'Valloric/YouCompleteMe'
 " emmet
-Plugin 'mattn/emmet-vim'
+"Plugin 'mattn/emmet-vim'
 " supertab - tab everything
 "Plugin 'ervandew/supertab'
 " syntax checker
@@ -36,22 +36,22 @@ Plugin 'tpope/vim-git'
 " javascript-syntax
 Plugin 'jelera/vim-javascript-syntax'
 " js beautify
-Plugin 'einars/js-beautify'
+"Plugin 'einars/js-beautify'
 "Plugin 'maksimr/vim-jsbeautify'
 " JSON
-Plugin 'elzr/vim-json'
+"Plugin 'elzr/vim-json'
 " jshint
-Plugin 'walm/jshint.vim'
+"Plugin 'walm/jshint.vim'
 " coffeescript-syntax
-Plugin 'kchmck/vim-coffee-script'
+"Plugin 'kchmck/vim-coffee-script'
 " typescript
-Plugin 'leafgarland/typescript-vim'
-Plugin 'clausreinke/typescript-tools.vim'
+"Plugin 'leafgarland/typescript-vim'
+"Plugin 'clausreinke/typescript-tools.vim'
 " python
 " ropevim - vim refactoring
 "Plugin 'python-rope/ropevim'
 " pydoc support
-Plugin 'fs111/pydoc.vim'
+"Plugin 'fs111/pydoc.vim'
 " ag, the silver searcher
 Plugin 'rking/ag.vim'
 " nerd commenter
@@ -68,12 +68,12 @@ Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 " coffeescript snippets
-Plugin 'carlosvillu/coffeScript-VIM-Snippets'
+"Plugin 'carlosvillu/coffeScript-VIM-Snippets'
 " node support, completion with recognizing local modules
 Plugin 'moll/vim-node'
-Plugin 'ahayman/vim-nodejs-complete'
+"Plugin 'ahayman/vim-nodejs-complete'
 " node debugger
-Plugin 'sidorares/node-vim-debugger'
+"Plugin 'sidorares/node-vim-debugger'
 " autosave
 "Plugin 'vim-scripts/vim-auto-save'
 " instant markdown preview
@@ -83,11 +83,11 @@ Plugin 'Raimondi/delimitMate'
 " handle surrouding characters, i.e. ', ", ...
 Plugin 'tpope/vim-surround'
 " multiple cursors
-Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'terryma/vim-multiple-cursors'
 " markdown
 Plugin 'plasticboy/vim-markdown'
 " latex
-Plugin 'lervag/vim-latex'
+"Plugin 'lervag/vim-latex'
 "Plugin 'LaTeX-Box-Team/LaTeX-Box'
 " theme
 Plugin 'NLKNguyen/papercolor-theme'

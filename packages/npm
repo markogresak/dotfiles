@@ -20,6 +20,7 @@ fstream@1.0.10
 gist-cli@0.2.1
 git-recent@1.0.0
 glob@7.0.4
+jshint@2.9.3
 loadtest@1.4.4
 npm@3.9.5
 npm-check-updates@2.6.7
@@ -28,6 +29,7 @@ npm-user-validate@0.1.4
 phantomjs@2.1.7
 readable-stream@2.1.4
 scss-lint@0.0.0
+tern@0.20.0
 warriorjs@2.2.0
 which@1.2.10
 wrappy@1.0.2
