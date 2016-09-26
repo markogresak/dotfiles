@@ -10,6 +10,10 @@ function update_cask {
   brew cask list -1 > casks
 }
 
+function update_taps {
+  brew tap --list > taps
+}
+
 function update_npm {
   echo 'Updating npm global modules...'
   npm ls -g --depth 0 | grep '@' | cut -d' ' -f2 > npm
@@ -17,5 +21,6 @@ function update_npm {
 
 update_brew &
 update_cask &
+update_taps &
 update_npm &
 wait
