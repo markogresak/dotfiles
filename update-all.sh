@@ -16,3 +16,5 @@ function exec_update {
 find . -name "$update_script_name" | while read script_path; do
   exec_update "$script_path"
 done
+
+git commit -a -m "auto-update on $(date "+%Y/%m/%d %H:%M:%S")"
