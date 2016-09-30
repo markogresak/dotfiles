@@ -1,11 +1,9 @@
 #!/bin/bash
 
-config_files=(
-  '~/.editorconfig'
-)
+source ./config_files.sh
 
 for file in ${config_files[@]}; do
-  if eval ../.helpers/copy-if-exists.sh "$file"; then
-    echo "Updated $file."
-  fi
+  eval ../.helpers/copy-if-exists.sh "$file"
 done
+
+unset config_files

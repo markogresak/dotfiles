@@ -1,10 +1,9 @@
 #!/bin/bash
 
-config_files=(
-  '~/.vimrc'
-  '~/.nvimrc'
-)
+source ./config_files.sh
 
 for file in ${config_files[@]}; do
   eval ../.helpers/copy-if-exists.sh "$file"
 done
+
+unset config_files

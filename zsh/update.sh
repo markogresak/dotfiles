@@ -1,13 +1,11 @@
 #!/bin/bash
 
-config_files=(
-  '~/.zshrc'
-  '~/.globalsrc'
-  '~/.oh-my-zsh/custom/themes/agnoster.zsh-theme'
-)
+source ./config_files.sh
 
 for file in ${config_files[@]}; do
   eval ../.helpers/copy-if-exists.sh "$file"
 done
+
+unset config_files
 
 echo 'Please update ~/.secretrc manually.'
