@@ -22,10 +22,6 @@ Global config files for git. `.gitignore` ignoring common OS and editor files.
 
 Config for JavaScript linter [ESLint][eslint].
 
-### typescript
-
-Config files for TypeScript linter [TSLint][tslint].
-
 ### css
 
 Config files for [SCSS linter][scss-lint].
@@ -41,7 +37,6 @@ Lists of packages and apps installed via [Homebrew][brew], [Homebrew Cask][cask]
   [molokai]: https://github.com/tomasr/molokai
   [editorconfig]: http://editorconfig.org/
   [eslint]: http://eslint.org/
-  [tslint]: http://palantir.github.io/tslint/
   [scss-lint]: https://github.com/brigade/scss-lint
   [brew]: http://brew.sh/
   [cask]: https://caskroom.github.io/
