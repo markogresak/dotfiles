@@ -26,10 +26,6 @@ Config for JavaScript linter [ESLint][eslint].
 
 Config files for TypeScript linter [TSLint][tslint].
 
-### coffee
-
-Config for CoffeeScript linter [CoffeeLint][coffeelint].
-
 ### css
 
 Config files for [SCSS linter][scss-lint].
@@ -46,7 +42,6 @@ Lists of packages and apps installed via [Homebrew][brew], [Homebrew Cask][cask]
   [editorconfig]: http://editorconfig.org/
   [eslint]: http://eslint.org/
   [tslint]: http://palantir.github.io/tslint/
-  [coffeelint]: http://www.coffeelint.org/
   [scss-lint]: https://github.com/brigade/scss-lint
   [brew]: http://brew.sh/
   [cask]: https://caskroom.github.io/
