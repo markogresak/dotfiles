@@ -6,6 +6,7 @@
 	name = Marko Grešak
 	email = gresak.marko@gmail.com
 	editor = vim
+	signingkey = 534C8F2248DA2309
 [core]
 	editor = vim
 	excludesfile = /Users/markogresak/.gitignore_global
@@ -48,3 +49,5 @@
 	trustExitCode = true
 [pull]
 	default = current
+[commit]
+	gpgsign = true

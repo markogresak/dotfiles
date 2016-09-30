@@ -3,4 +3,5 @@ caskroom/versions
 codekitchen/dinghy
 homebrew/apache
 homebrew/core
+homebrew/devel-only
 homebrew/dupes
