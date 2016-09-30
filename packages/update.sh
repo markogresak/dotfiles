@@ -19,6 +19,9 @@ function update_npm {
   npm ls -g --depth 0 | grep '@' | cut -d' ' -f2 > npm
 }
 
+# update brew to prevent listing packages from auto-update
+brew update > /dev/null
+
 update_brew &
 update_cask &
 update_taps &
