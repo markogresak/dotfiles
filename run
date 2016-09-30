@@ -1,0 +1,88 @@
+#!/bin/bash
+
+set -m
+
+function print_help {
+  echo -e "Usage: $0 [operation]\n"
+  echo -e "Supported operations:"
+  echo -e "\tupdate\t\t\tRecursively searches for and runs all update.sh scripts."
+  echo -e "\trestore\t\t\tRecursively searches for and runs all restore.sh scripts."
+  echo -e "\t-i | --interactive\tInteractive mode (ask before removing logs)."
+  echo -e "\t-h | --help\t\tPrint this help message."
+}
+
+if [[ -z "$1" ]]; then
+  echo "Error: No operation provided."
+  print_help
+  exit 1
+fi
+
+
+for i in "$@"; do
+  case $i in
+    -h|--help)
+      print_help
+      exit 0
+      shift
+    ;;
+    -i|--interactive)
+      interactive="true"
+      shift
+    ;;
+    update)
+      script_name="update.sh"
+      shift
+    ;;
+    restore)
+      script_name="restore.sh"
+      shift
+    ;;
+    *)
+      echo -e "Error: Unknown operation provided.\n"
+      print_help
+      exit 1
+    ;;
+  esac
+done
+
+function exec_update {
+  local oldpwd
+  oldpwd=$PWD
+  cd `dirname $1`
+  eval "./$script_name"
+  cd $oldpwd
+}
+
+# Recursively search for and exec scripts.
+find . -name "$script_name" | while read script_path; do
+  exec_update "$script_path"
+done
+
+# If update, add an auto-update commit
+if [[ "$script_name" == "update.sh" ]]; then
+  git commit -a -m "auto-update on $(date "+%Y/%m/%d %H:%M:%S")"
+fi
+
+function remove_logs {
+  rm -f ./**/*.log
+}
+
+# If restore, ask to remove all .log files
+if [[ "$script_name" == "restore.sh" ]]; then
+  if [[ "$interactive" != "true" ]]; then
+    remove_logs
+  else
+    while true; do
+        read -p "Remove all .log files? (y/n) " yn
+        case $yn in
+            [Yy]* )
+              remove_logs
+              break
+            ;;
+            [Nn]* )
+              break
+            ;;
+        esac
+    done
+  fi
+fi
