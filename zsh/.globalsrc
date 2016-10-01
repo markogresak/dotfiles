@@ -13,11 +13,13 @@ export PHANTOMJS_BIN="$NVM_BIN/phantomjs"
 # Add brew opt folder (bash, vim, gnutools) and Firefox folder (needed by Protractor).
 export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app/Contents/MacOS"
 # local paths
-export sola="$HOME/MEGA/sola"
-export dev="$HOME/MEGA/projects"
-export repos="$HOME/MEGA/projects"
+docs_base_path="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents"
+export docs="$docs_base_path"
+export sola="$docs_base_path/sola"
+export dev="$docs_base_path/projects"
+export repos="$docs_base_path/projects"
 # path to project folder
-export proj="$HOME/MEGA/dlabs"
+export proj="$docs_base_path/dlabs"
 
 ## globally used variables
 # student id
@@ -70,6 +72,12 @@ alias ssg="ssh gresakio"
 alias at="atom"
 alias att="atom ."
 alias atp="atom $proj"
+# brew
+alias bs="brew search"
+alias bi="brew install"
+alias bui="brew uninstall"
+alias bci="brew cask install"
+alias bcui="brew cask uninstall"
 # merge pdf (OS X)
 alias mergepdf="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
 
