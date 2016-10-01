@@ -45,10 +45,12 @@ for i in "$@"; do
   esac
 done
 
+# escape spaces in $PWD path
+pwd=$(pwd | sed -e 's/\ /\\\ /g')
 if [[ $script_name == "update.sh" ]]; then
-  config_helper="$PWD/.helpers/update-if-exists.sh"
+  config_helper="$pwd/.helpers/update-if-exists.sh"
 elif [[ $script_name == "restore.sh" ]]; then
-  config_helper="$PWD/.helpers/restore-if-exists.sh"
+  config_helper="$pwd/.helpers/restore-if-exists.sh"
 fi
 
 config_files_name="config_files.sh"
