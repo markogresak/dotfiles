@@ -6,10 +6,6 @@ Config for [zsh][zsh].
 
 Using [oh-my-zsh][oh-my-zsh], because it's awesome! And customized agnoster theme, inspired by powerline, because it's cool and useful.
 
-### vim
-
-Vim config bundled with [Vundle][vundle] and [molokai][molokai] theme. Also some useful things in `.vimrc`.
-
 ### git
 
 Global config files for git. `.gitignore` ignoring common OS and editor files.
@@ -17,6 +13,8 @@ Global config files for git. `.gitignore` ignoring common OS and editor files.
 ### editor
 
 [EditorConfig][editorconfig] file, shared between editors.
+
+Vim config bundled with [Vundle][vundle] and [molokai][molokai] theme. Also some useful things in `.vimrc`.
 
 ### js
 

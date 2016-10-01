@@ -2,4 +2,5 @@
 
 config_files=(
   '~/.editorconfig'
+  '~/.vimrc'
 )
