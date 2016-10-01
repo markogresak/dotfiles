@@ -14,7 +14,7 @@ Global config files for git. `.gitignore` ignoring common OS and editor files.
 
 [EditorConfig][editorconfig] file, shared between editors.
 
-Vim config bundled with [Vundle][vundle] and [molokai][molokai] theme. Also some useful things in `.vimrc`.
+Vim config bundled with [Vundle][vundle] and [papercolor (dark)][papercolor] theme. Also some useful things in `.vimrc`.
 
 ### js
 
@@ -32,7 +32,7 @@ Lists of packages and apps installed via [Homebrew][brew], [Homebrew Cask][cask]
   [zsh]: http://www.zsh.org/
   [oh-my-zsh]: https://github.com/robbyrussell/oh-my-zsh
   [vundle]: https://github.com/gmarik/Vundle.vim
-  [molokai]: https://github.com/tomasr/molokai
+  [papercolor]: https://github.com/NLKNguyen/papercolor-theme
   [editorconfig]: http://editorconfig.org/
   [eslint]: http://eslint.org/
   [scss-lint]: https://github.com/brigade/scss-lint
