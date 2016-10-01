@@ -45,18 +45,58 @@ for i in "$@"; do
   esac
 done
 
-function exec_update {
-  local oldpwd
-  oldpwd=$PWD
+if [[ script_name == "update.sh" ]]; then
+  config_helper="./.helpers/update-if-exists.sh"
+elif [[ script_name == "restore.sh" ]]; then
+  config_helper="./.helpers/restore-if-exists.sh"
+fi
+
+config_files_name="config_files.sh"
+
+function exec_with_config_files {
+  # cd into directory where config_files.sh is located
+  local oldpwd=$PWD
+  cd `dirname $1`
+  # load config files
+  source "./$config_files_name"
+  # execute copy files helper for each file
+  for file in ${config_files[@]}; do
+    eval "$config_helper" "$file"
+  done
+  # cleanup imported config_files
+  unset config_files
+  # cd back to where function started
+  cd $oldpwd
+}
+
+function exec_script {
+  local oldpwd=$PWD
   cd `dirname $1`
   eval "./$script_name"
   cd $oldpwd
 }
 
-# Recursively search for and exec scripts.
-find . -name "$script_name" | while read script_path; do
-  exec_update "$script_path"
-done
+# $1: glob for searched file
+# $2: function to call with found file as argument
+function find_and_exec {
+  local file_glob="$1"
+  local callback=$2
+
+  find . -name "$file_glob" | while read file; do
+    callback "$file"
+  done
+}
+
+# Recursively search for config_files.sh and exec scripts.
+find_and_exec "$config_files_name" exec_with_config_files
+
+# Recursively search for update.sh/restore.sh and exec scripts.
+find_and_exec "$script_name" exec_script
+
+
+# -----------------------------------------------------------------------------
+# Post update/restore
+# -----------------------------------------------------------------------------
 
 # If update, add an auto-update commit
 if [[ "$script_name" == "update.sh" ]]; then
