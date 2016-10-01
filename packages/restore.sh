@@ -60,7 +60,7 @@ function install_npm {
 }
 
 function restore_taps {
-  cat ./taps | xargs brew tap &> $restore_taps_log
+  cat ./taps | xargs -n1 brew tap &> $restore_taps_log
 }
 
 function restore_brew {
