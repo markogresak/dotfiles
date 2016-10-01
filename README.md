@@ -26,7 +26,7 @@ Config files for [SCSS linter][scss-lint].
 
 ### packages
 
-Lists of packages and apps installed via [Homebrew][brew], [Homebrew Cask][cask] and [npm][npm].
+Lists of packages and apps installed via [Homebrew][brew], [Homebrew Cask][cask] and [npm][npm]. Also a reference list of Homebrew taps added, for easier time when restoring the packages.
 
 
   [zsh]: http://www.zsh.org/
