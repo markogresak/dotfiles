@@ -45,18 +45,22 @@ function install_npm {
 }
 
 function restore_taps {
+  echo "Restoring Homebrew taps..."
   cat ./taps | xargs -n1 brew tap &> $restore_taps_log
 }
 
 function restore_brew {
+  echo "Restoring Homebrew formulas..."
   cat ./brew | xargs brew install &> $restore_brew_log
 }
 
 function restore_cask {
+  echo "Restoring Homebrew casks..."
   cat ./casks | xargs brew cask install &> $restore_cask_log
 }
 
 function restore_npm {
+  echo "Restoring npm global modules..."
   cat ./npm | xargs npm install -g &> $restore_npm_log
 }
 
