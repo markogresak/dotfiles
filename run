@@ -45,9 +45,9 @@ for i in "$@"; do
   esac
 done
 
-if [[ script_name == "update.sh" ]]; then
+if [[ $script_name == "update.sh" ]]; then
   config_helper="./.helpers/update-if-exists.sh"
-elif [[ script_name == "restore.sh" ]]; then
+elif [[ $script_name == "restore.sh" ]]; then
   config_helper="./.helpers/restore-if-exists.sh"
 fi
 
