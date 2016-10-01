@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo 'zsh: Please update ~/.secretrc manually.'
+eval ../.helpers/log.sh "zsh" "Please update ~/.secretrc manually."

@@ -1,27 +1,27 @@
 #!/bin/bash
 
 function update_brew {
-  echo 'Updating Homebrew formulas...'
+  eval ../.helpers/log.sh "brew" "Updating formulas..."
   brew list -1 > brew
-  echo -e '\nHomebrew formulas updated.\n'
+  eval ../.helpers/log.sh "brew" "Formulas updated."
 }
 
 function update_cask {
-  echo 'Updating Homebrew Cask...'
+  eval ../.helpers/log.sh "brew" "Updating casks..."
   brew cask list -1 > casks
-  echo -e '\nHomebrew Cask updated.\n'
+  eval ../.helpers/log.sh "brew" "Casks updated."
 }
 
 function update_taps {
-  echo 'Updating Homebrew Taps...'
+  eval ../.helpers/log.sh "brew" "Updating taps..."
   brew tap --list > taps
-  echo -e '\nHomebrew taps updated.\n'
+  eval ../.helpers/log.sh "brew" "Taps updated."
 }
 
 function update_npm {
-  echo 'Updating npm global modules...'
+  eval ../.helpers/log.sh "npm" "Updating global modules..."
   npm ls -g --depth 0 | grep '@' | cut -d' ' -f2 > npm
-  echo -e '\nnpm global modules updated.\n'
+  eval ../.helpers/log.sh "npm" "Global modules updated."
 }
 
 # update brew to prevent listing packages from auto-update

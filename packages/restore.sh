@@ -10,84 +10,83 @@ restore_cask_log="restore_cask.log"
 restore_npm_log="restore_npm.log"
 
 function install_brew {
-  echo "Checking for Homebrew..."
+  eval ../.helpers/log.sh "brew" "Checking for Homebrew (brew) command..."
   if hash brew 2>/dev/null; then
-    echo "Homebrew already installed."
+    eval ../.helpers/log.sh "brew" "Homebrew is already installed."
   else
-    echo "Homebrew not installed. Installing Homebrew now..."
+    eval ../.helpers/log.sh "brew" "Homebrew not installed. Installing Homebrew now..."
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" &> $install_brew_log
 
-    echo -e "\nHomebrew installed.\n"
+    eval ../.helpers/log.sh "brew" "Homebrew installed."
   fi
 }
 
 function install_nvm {
-  echo "Checking for nvm..."
+  eval ../.helpers/log.sh "npm" "Checking for nvm command..."
   # using size check, hash does not detect nvm because it's a script
   if [ -s "$NVM_DIR/nvm.sh" ]; then
-    echo "nvm already installed."
+    eval ../.helpers/log.sh "npm" "nvm already installed."
   else
-    echo "nvm not installed. Installing nvm now..."
-    curl -so- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &> $install_nvm_log
+    eval ../.helpers/log.sh "npm" "nvm not installed. Installing nvm now..."
 
+    curl -so- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &> $install_nvm_log
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-    echo -e "\nnvm installed.\n"
+    eval ../.helpers/log.sh "npm" "nvm installed."
   fi
 }
 
 function install_rvm {
-  echo "Checking for rvm..."
+  eval ../.helpers/log.sh "ruby" "Checking for rvm command..."
   if hash rvm 2>/dev/null; then
-    echo "rvm already installed."
+    eval ../.helpers/log.sh "ruby" "rvm already installed."
   else
-    echo "rvm not installed. Installing rvm and latest ruby now..."
+    eval ../.helpers/log.sh "ruby" "rvm not installed. Installing rvm and latest ruby now..."
     curl -sSL https://get.rvm.io | bash -s stable --ruby &> $install_rvm_log
 
-    echo -e "\nrvm and latest version of ruby installed.\n"
+    eval ../.helpers/log.sh "ruby" "rvm and latest version of ruby installed."
   fi
 }
 
 function install_npm {
-  echo "Checking for npm..."
+  eval ../.helpers/log.sh "npm" "Checking for npm command..."
   if hash npm 2>/dev/null; then
-    echo "npm already installed."
+    eval ../.helpers/log.sh "npm" "npm already installed..."
   else
-    echo "npm not installed. Installing latest version of node + npm now..."
+    eval ../.helpers/log.sh "npm" "npm not installed. Installing latest version of node and npm now..."
 
     if hash nvm 2>/dev/null; then
       nvm install $(nvm ls-remote | grep -oE '(v\d+.\d+.\d+)' | tail -1) &> $install_npm_log
-
-      echo -e "\nLatest version of node and npm installed.\n"
+      eval ../.helpers/log.sh "npm" "Latest version of node and npm installed."
     else
-      echo "Unable to install npm, nvm was not found!"
+      eval ../.helpers/log.sh "npm" "Unable to install npm, nvm was not found!" "error"
     fi
   fi
 }
 
 function restore_taps {
-  echo "Restoring Homebrew taps..."
+  eval ../.helpers/log.sh "brew" "Restoring taps..."
   cat ./taps | xargs -n1 brew tap &> $restore_taps_log
-  echo -e "\nHomebrew taps restored.\n"
+  eval ../.helpers/log.sh "brew" "Taps restored."
 }
 
 function restore_brew {
-  echo "Restoring Homebrew formulas..."
+  eval ../.helpers/log.sh "brew" "Restoring formulas..."
   cat ./brew | xargs brew install &> $restore_brew_log
-  echo -e "\nHomebrew formulas restored.\n"
+  eval ../.helpers/log.sh "brew" "Formulas restored."
 }
 
 function restore_cask {
-  echo "Restoring Homebrew casks..."
+  eval ../.helpers/log.sh "brew" "Restoring casks..."
   cat ./casks | xargs brew cask install &> $restore_cask_log
-  echo -e "\nHomebrew casks restored.\n"
+  eval ../.helpers/log.sh "brew" "Casks restored."
 }
 
 function restore_npm {
-  echo "Restoring npm global modules..."
+  eval ../.helpers/log.sh "npm" "Restoring global modules..."
   cat ./npm | xargs npm install -g &> $restore_npm_log
-  echo -e "\nnpm global modules restored.\n"
+  eval ../.helpers/log.sh "npm" "Global modules restored."
 }
 
 function brew_all {

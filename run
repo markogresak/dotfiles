@@ -93,6 +93,7 @@ find_and_exec "$script_name" exec_script
 # Recursively search for config_files.sh and exec scripts.
 find_and_exec "$config_files_name" exec_with_config_files
 
+echo -e "\n"
 
 # -----------------------------------------------------------------------------
 # Post update/restore
@@ -100,7 +101,7 @@ find_and_exec "$config_files_name" exec_with_config_files
 
 # If update, add an auto-update commit
 if [[ "$script_name" == "update.sh" ]]; then
-  git add -A && git commit -m "auto-update on $(date "+%Y/%m/%d %H:%M:%S")" &> /dev/null || echo "Nothing to update."
+  git add -A && git commit -m "auto-update on $(date "+%Y/%m/%d %H:%M:%S")" &> /dev/null && echo "Generated auto-update commit." || echo "Nothing to update."
 fi
 
 function remove_logs {
