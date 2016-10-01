@@ -10,7 +10,7 @@ restore_cask_log="restore_cask.log"
 restore_npm_log="restore_npm.log"
 
 function install_brew {
-  eval ../.helpers/log.sh "brew" "Checking for Homebrew (brew) command..."
+  eval ../.helpers/log.sh "brew" "Checking for Homebrew brew command..."
   if hash brew 2>/dev/null; then
     eval ../.helpers/log.sh "brew" "Homebrew is already installed."
   else
