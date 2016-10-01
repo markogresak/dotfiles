@@ -38,7 +38,7 @@ function install_npm {
     echo "npm already installed."
   else
     echo "npm not installed. Installing latest version of node + npm now..."
-    nvm install $(nvm ls-remote | tail -1) &> $install_npm_log
+    nvm install $(nvm ls-remote | grep -oE '(v\d+.\d+.\d+)' | tail -1) &> $install_npm_log
 
     echo -e "\Latest version of node and npm installed.\n"
   fi
