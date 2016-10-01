@@ -53,26 +53,26 @@ function install_npm {
     echo "npm already installed."
   else
     echo "npm not installed. Installing latest version of node + npm now..."
-    nvm install $(nvm ls-remote | tail -1) &> install_npm_log
+    nvm install $(nvm ls-remote | tail -1) &> $install_npm_log
 
     echo -e "\Latest version of node and npm installed.\n"
   fi
 }
 
 function restore_taps {
-  cat ./taps | xargs brew tap &> restore_taps_log
+  cat ./taps | xargs brew tap &> $restore_taps_log
 }
 
 function restore_brew {
-  cat ./brew | xargs brew install &> restore_brew_log
+  cat ./brew | xargs brew install &> $restore_brew_log
 }
 
 function restore_cask {
-  cat ./casks | xargs brew cask install &> restore_cask_log
+  cat ./casks | xargs brew cask install &> $restore_cask_log
 }
 
 function restore_npm {
-  cat ./npm | xargs npm install -g &> restore_npm_log
+  cat ./npm | xargs npm install -g &> $restore_npm_log
 }
 
 function brew_restore_all {
