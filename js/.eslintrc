@@ -1,19 +1,14 @@
 {
   "parser": "babel-eslint",
-  "plugins": [
-    "flow-vars"
-  ],
   "extends": "airbnb",
   "env": {
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "jest": true,
     "jasmine": true,
   },
   "globals": {
     "__ENVIRONMENT__": false,
-    "React": false
   },
   "rules": {
     "no-confusing-arrow": 0,
@@ -29,7 +24,5 @@
     "arrow-body-style": [1, "as-needed"],
     "consistent-return": 0,
     "semi": [1, "never"],
-    "flow-vars/define-flow-type": 1,
-    "flow-vars/use-flow-type": 1,
   }
 }
