@@ -1,6 +1,7 @@
 #!/bin/bash
 
 install_brew_log="install_brew.log"
+install_nvm_log="install_nvm.log"
 install_rvm_log="install_rvm.log"
 install_npm_log="install_npm.log"
 restore_taps_log="restore_taps.log"
@@ -17,6 +18,22 @@ function install_brew {
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" &> $install_brew_log
 
     echo -e "\nHomebrew installed.\n"
+  fi
+}
+
+function install_nvm {
+  echo "Checking for nvm..."
+  # using size check, hash does not detect nvm because it's a script
+  if [ -s "$NVM_DIR/nvm.sh" ]; then
+    echo "nvm already installed."
+  else
+    echo "nvm not installed. Installing nvm now..."
+    curl -so- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &> $install_nvm_log
+
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+    echo -e "\nnvm installed.\n"
   fi
 }
 
@@ -52,8 +69,6 @@ function restore_taps {
 function restore_brew {
   echo "Restoring Homebrew formulas..."
   cat ./brew | xargs brew install &> $restore_brew_log
-
-  source "$(brew --prefix nvm)/nvm.sh"
 }
 
 function restore_cask {
@@ -66,14 +81,25 @@ function restore_npm {
   cat ./npm | xargs npm install -g &> $restore_npm_log
 }
 
+function brew_all {
+  install_brew
+  restore_taps
+  restore_brew &
+  restore_cask &
+  wait
+}
 
-install_brew
-restore_taps
-restore_brew
-# install_npm requires nvm, which is installed as part of restore_brew
-install_npm
+function node_all {
+  install_nvm
+  install_npm
+  restore_npm
+}
 
-install_rvm &
-restore_cask &
-restore_npm &
+function ruby_all {
+  install_rvm
+}
+
+brew_all &
+node_all &
+ruby_all &
 wait

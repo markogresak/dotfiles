@@ -61,7 +61,6 @@ lua
 mpfr
 mysql
 nettle
-nvm
 openssl
 pandoc
 pcre
