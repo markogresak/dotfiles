@@ -52,6 +52,8 @@ function restore_taps {
 function restore_brew {
   echo "Restoring Homebrew formulas..."
   cat ./brew | xargs brew install &> $restore_brew_log
+
+  source "$(brew --prefix nvm)/nvm.sh"
 }
 
 function restore_cask {
