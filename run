@@ -83,7 +83,7 @@ function find_and_exec {
   local callback=$2
 
   find . -name "$file_glob" | while read file; do
-    callback "$file"
+    $callback "$file"
   done
 }
 
