@@ -11,6 +11,7 @@ function update_cask {
 }
 
 function update_taps {
+  echo 'Updating Homebrew Taps...'
   brew tap --list > taps
 }
 
