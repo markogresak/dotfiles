@@ -87,11 +87,11 @@ function find_and_exec {
   done
 }
 
-# Recursively search for config_files.sh and exec scripts.
-find_and_exec "$config_files_name" exec_with_config_files
-
 # Recursively search for update.sh/restore.sh and exec scripts.
 find_and_exec "$script_name" exec_script
+
+# Recursively search for config_files.sh and exec scripts.
+find_and_exec "$config_files_name" exec_with_config_files
 
 
 # -----------------------------------------------------------------------------
