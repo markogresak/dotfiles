@@ -68,7 +68,7 @@ function restore_brew {
 }
 
 function restore_cask {
-  cat ./cask | xargs brew cask install &> restore_cask_log
+  cat ./casks | xargs brew cask install &> restore_cask_log
 }
 
 function restore_npm {
