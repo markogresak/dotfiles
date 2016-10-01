@@ -37,17 +37,20 @@ for arg in "$@"; do
   message="$message $arg"
 done
 
-case $operation in
-  brew) color=$yellow ;;
-  npm) color=$green ;;
-  ruby) color=$red ;;
-  zsh) color=$cyan ;;
-  editor) color=$light_blue ;;
-  git) color=$light_magenta ;;
-  css) color=$light_cyan ;;
-  js) color=$light_yellow ;;
-  *) color=$default_color ;;
-esac
+function set_color_by_operation {
+  case $operation in
+    brew) color=$yellow ;;
+    npm) color=$green ;;
+    ruby) color=$red ;;
+    zsh) color=$cyan ;;
+    editor) color=$light_blue ;;
+    git) color=$light_magenta ;;
+    css) color=$light_cyan ;;
+    js) color=$light_yellow ;;
+    *) color=$default_color ;;
+  esac
+}
+set_color_by_operation
 
 if [[ -n $color_name ]]; then
   case $color_name in
@@ -72,6 +75,7 @@ if [[ -n $color_name ]]; then
       color=$default_color
       # last arg was not color name, must have been a part of message
       message="$message $color_name"
+      set_color_by_operation
     ;;
   esac
 fi
