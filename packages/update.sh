@@ -20,7 +20,7 @@ function update_taps {
 
 function update_npm {
   eval ../.helpers/log.sh "npm" "Updating global modules..."
-  npm ls -g --depth 0 | grep '@' | cut -d' ' -f2 > npm
+  npm ls --depth 0 -g  2>/dev/null | grep '@' | cut -d' ' -f2 > npm
   eval ../.helpers/log.sh "npm" "Global modules updated."
 }
 
