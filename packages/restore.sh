@@ -69,21 +69,25 @@ function install_npm {
 function restore_taps {
   echo "Restoring Homebrew taps..."
   cat ./taps | xargs -n1 brew tap &> $restore_taps_log
+  echo -e "\nHomebrew taps restored.\n"
 }
 
 function restore_brew {
   echo "Restoring Homebrew formulas..."
   cat ./brew | xargs brew install &> $restore_brew_log
+  echo -e "\nHomebrew formulas restored.\n"
 }
 
 function restore_cask {
   echo "Restoring Homebrew casks..."
   cat ./casks | xargs brew cask install &> $restore_cask_log
+  echo -e "\nHomebrew casks restored.\n"
 }
 
 function restore_npm {
   echo "Restoring npm global modules..."
   cat ./npm | xargs npm install -g &> $restore_npm_log
+  echo -e "\nnpm global modules restored.\n"
 }
 
 function brew_all {

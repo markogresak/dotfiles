@@ -10,6 +10,8 @@ function install_vundle {
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim &> $install_vundle_log
     echo "" >> $install_vundle_log
     vim +PluginInstall +qall >> $install_vundle_log 2>&1
+
+    echo -e "\nvundle installed.\n"
   fi
 }
 

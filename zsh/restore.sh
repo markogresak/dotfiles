@@ -11,6 +11,8 @@ function install_zsh {
     rm -rf "$HOME/.oh-my-zsh"
     echo "~/.oh-my-zsh does not exist. Installing oh-my-zsh now..."
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &> $install_zsh_log
+
+    echo -e "\noh-my-zsh installed.\n"
   fi
 }
 
