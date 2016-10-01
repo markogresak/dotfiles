@@ -42,8 +42,8 @@ function install_rvm {
   if hash rvm 2>/dev/null; then
     echo "rvm already installed."
   else
-    echo "rvm not installed. Installing rvm and latest ruby now..." &> $install_rvm_log
-    curl -sSL https://get.rvm.io | bash -s stable --ruby
+    echo "rvm not installed. Installing rvm and latest ruby now..."
+    curl -sSL https://get.rvm.io | bash -s stable --ruby &> $install_rvm_log
 
     echo -e "\nrvm and latest version of ruby installed.\n"
   fi
