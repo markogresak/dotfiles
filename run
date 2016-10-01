@@ -55,8 +55,8 @@ config_files_name="config_files.sh"
 
 function exec_with_config_files {
   # cd into directory where config_files.sh is located
-  local oldpwd=$PWD
-  cd `dirname $1`
+  local oldpwd="$PWD"
+  cd "$(dirname $1)"
   # load config files
   source "./$config_files_name"
   # execute copy files helper for each file
@@ -66,14 +66,14 @@ function exec_with_config_files {
   # cleanup imported config_files
   unset config_files
   # cd back to where function started
-  cd $oldpwd
+  cd "$oldpwd"
 }
 
 function exec_script {
-  local oldpwd=$PWD
-  cd `dirname $1`
+  local oldpwd="$PWD"
+  cd "$(dirname $1)"
   eval "./$script_name"
-  cd $oldpwd
+  cd "$oldpwd"
 }
 
 # $1: glob for searched file
@@ -83,7 +83,7 @@ function find_and_exec {
   local callback=$2
 
   find . -name "$file_glob" | while read file; do
-    $callback "$file"
+    "$callback" "$file"
   done
 }
 
