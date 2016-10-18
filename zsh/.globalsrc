@@ -15,7 +15,7 @@ export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app
 # local paths
 docs_base_path=$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Documents
 export docs="$docs_base_path"
-export sola="$docs_base_path/sola"
+export sola="$docs_base_path/sola/3.letnik"
 export dev="$docs_base_path/projects"
 export repos="$docs_base_path/projects"
 # path to project folder
