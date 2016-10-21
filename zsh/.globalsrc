@@ -83,6 +83,8 @@ alias fs="foreman start"
 alias fsl="foreman start -f Procfile.local"
 # merge pdf (OS X)
 alias mergepdf="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
+# python
+alias py=python3
 
 ## config
 export LC_ALL=en_US.UTF-8
