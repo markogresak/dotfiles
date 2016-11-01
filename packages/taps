@@ -7,3 +7,4 @@ homebrew/core
 homebrew/devel-only
 homebrew/dupes
 homebrew/php
+homebrew/versions
