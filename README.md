@@ -28,6 +28,10 @@ Config files for [SCSS linter][scss-lint].
 
 Lists of packages and apps installed via [Homebrew][brew], [Homebrew Cask][cask] and [npm][npm]. Also a reference list of Homebrew taps added, for easier time when restoring the packages.
 
+## Notes
+
+Install `ffmpeg` using `brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-libass --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265`
+
 
   [zsh]: http://www.zsh.org/
   [oh-my-zsh]: https://github.com/robbyrussell/oh-my-zsh
