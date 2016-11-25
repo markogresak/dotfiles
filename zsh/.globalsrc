@@ -35,6 +35,7 @@ export NODE_ENV="development"
 export PORT=3000
 # editor settings
 export EDITOR=vim
+alias sudoedit="sudo $EDITOR"
 export MYVIMRC="~/.vimrc"
 
 ## aliases

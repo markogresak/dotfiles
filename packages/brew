@@ -18,7 +18,7 @@ elixir
 elm
 erlang
 fdk-aac
-ffmpeg
+ffmpeg --with-fdk-aac --with-freetype --with-libass --with-libvorbis --with-libvpx --with-opus --with-x265 --with-sdl2
 findutils
 fontconfig
 freetype
@@ -53,7 +53,7 @@ harfbuzz
 heroku
 highlight
 htop
-httpd24
+httpd24 --with-privileged-ports --with-http2
 icu4c
 isl
 isl011
@@ -96,7 +96,7 @@ opus
 pandoc
 pcre
 php-cs-fixer
-php70
+php70 --with-apache
 php70-mcrypt
 pinentry
 pinentry-mac
@@ -122,7 +122,7 @@ uncrustify
 unfs3
 unixodbc
 unrar
-vim
+vim --with-override-system-vi
 watch
 wget
 wxmac

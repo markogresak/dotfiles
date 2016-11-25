@@ -3,7 +3,9 @@ babel-preset-es2015@6.16.0
 babel-preset-react@6.16.0
 babel-preset-stage-0@6.16.0
 bower@1.7.9
+create-elm-app@0.2.1
 elm-oracle@1.1.1
+elm-upgrade@0.18.6
 eslint@3.7.0
 eslint-config-airbnb@12.0.0
 eslint-plugin-import@1.16.0
