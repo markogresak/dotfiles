@@ -1,5 +1,6 @@
 apr
 apr-util
+atomicparsley
 autoconf
 automake
 binutils
@@ -7,6 +8,7 @@ boost
 cabal-install
 cairo
 chrome-cli
+chromedriver
 cloog018
 composer
 coreutils
@@ -111,6 +113,7 @@ readline
 redis
 rlwrap
 sdl2
+selenium-server-standalone
 spdylay
 sqlite
 texi2html

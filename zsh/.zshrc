@@ -329,72 +329,141 @@ favicons () {
 }
 
 # Convert mp3 file(s) into a single .m4b audiobook file.
-# Usage: mp3-to-audiobook [-o outfile] infile1 [infile2 [...]]
-# If outfile doesn't end in .m4b, it will be added automatically.
-# Defaults:
-#  - infiles: All *.mp3 files in current working directory.
-#  - outfile: {name of current working direcotry}.m4b.
-# Notes:
-#  - Outfile option (`-o {outfile}`) must be specified before infiles.
-#
-# Examples:
-# (assume we're in folder `test` with `file1.mp3, file2.mp3, file3.mp3`)
-#  - mp3-to-audiobook -o audiobook.m4b file1.mp3 file2.mp3 (convert `file1.mp3 + file2.mp3` into `audiobook.m4b`)
-#  - mp3-to-audiobook file1.mp3 file2.mp3 (convert `file1.mp3 + file2.mp3` into `test.m4b`)
-#  - mp3-to-audiobook -o audiobook.m4b *.mp3 (convert `file1.mp3 + file2.mp3 + file3.mp3` into `audiobook.m4b`)
-#  - mp3-to-audiobook (same as `mp3-to-audiobook -o $(basename $PWD) *.mp3`)
-#
 mp3-to-audiobook () {
-  local outfile infiles file len concat title
+  local outfile infiles file len concat title cover tmp_cover_file first_mp3 auto_cover
+
+  # Set default output filename as current directory name.
+  outfile=$(basename $PWD)
+  # Parse arguments and check for -o (output file) argument.
+  OPTIND=1
+  while getopts "hc:o:" opt; do
+    case "$opt" in
+      h)
+        echo "
+  Convert mp3 file(s) into a single .m4b audiobook file.
+
+  Usage: mp3-to-audiobook [-c cover-image] [-o outfile] infile1 [infile2 [...]]
+
+  Defaults:
+    * cover-image: cover image of first \`.mp3\` file, if it exists.
+    * outfile: {name of current working directory}.m4b.
+    * infiles: All *.mp3 files in current working directory.
+
+  Notes:
+    * Cover image must be of type jpg or png.
+    * If outfile doesn't end in .m4b, it will be added automatically.
+    * Options \`-o {outfile}\` and \`-c {cover-image}\` must be specified before infiles.
+
+  Examples:
+
+    (assume we're in folder \`test\` with files \`file1.mp3, file2.mp3, file3.mp3, cover.jpg\`)
+
+
+    - convert all .mp3 files in current directory into \`test.m4b\` (current working directory name)
+
+      $ mp3-to-audiobook
+
+
+    - convert all .mp3 files in current directory into \`test.m4b\` and add \`cover.jpg\` as cover photo
+
+      $ mp3-to-audiobook -c cover.jpg
+
+
+    - convert \`file1.mp3 + file2.mp3\` into \`audiobook.m4b\`
+
+      $ mp3-to-audiobook -o audiobook.m4b file1.mp3 file2.mp3
+
+
+    - convert \`file1.mp3 + file2.mp3\` into \`audiobook.m4b\` and use \`cover.jpg\` as cover photo
+
+      $ mp3-to-audiobook -c cover.jpg -o audiobook.m4b file1.mp3 file2.mp3
+
+
+    - convert \`file1.mp3 + file2.mp3\` into \`test.m4b\` (current working directory name)
+
+      $ mp3-to-audiobook file1.mp3 file2.mp3
+
+
+    - convert \`file1.mp3 + file2.mp3 + file3.mp3\` into \`audiobook.m4b\`
+
+      $ mp3-to-audiobook -o audiobook.m4b *.mp3
+        "
+        return 0
+        ;;
+      c) cover=$OPTARG ;;
+      o) outfile=$OPTARG ;;
+    esac
+  done
+  # Shift opts to skip options arguments.
+  shift $((OPTIND-1)); [ "$1" = "--" ] && shift
+
   # Check for ffmpeg command, exit if ti doesn't exist.
   if ! command -v ffmpeg >/dev/null 2>&1; then
     text="Command 'ffmpeg' is required, please install it.\nIf on OS X, use:\n\n"
     text="${text}brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-libass"
     text="${text} --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265"
     echo -e >&2 "$text"
-  else
-    # Set default output filename as current directory name.
-    outfile=$(basename $PWD)
-    # Parse arguments and check for -o (output file) argument.
-    OPTIND=1
-    while getopts "o" opt; do
-      case "$opt" in
-        o) outfile=$2 ;;
-      esac
-    done
-    # Shift opts to skip options arguments.
-    shift $((OPTIND-1)); [ "$1" = "--" ] && shift
+    return 1
+  fi
 
-    # If output file doesn't end in .m4b file ext, add it.
-    if [[ "$outfile" != "*.m4b" ]]; then
-      outfile="${outfile}.m4b"
+  # check if in add cover mode
+  if [[ -n "$cover" ]] && ! command -v atomicparsley >/dev/null 2>&1; then
+    echo "Command 'atomicparsley' is required to add cover, but was not found. Please install it and try again."
+    return 1
+  fi
+
+  # If output file doesn't end in .m4b file ext, add it.
+  if [[ "$outfile" != "*.m4b" ]]; then
+    outfile="${outfile}.m4b"
+  fi
+
+  # Set `infiles` to all arguments (except starting -o if it exists).
+  infiles="$@"
+  # If infiles is empty, then set files to all files in current directory with .mp3 extension.
+  if [ -z $infiles ]; then
+    infiles=(*.mp3)
+  fi
+
+  # Loop through all arguments and concat them into string `"concat:file_1|file_2|...|file_n|"`.
+  len=0
+  concat="concat:"
+  for file in $infiles; do
+    concat="${concat}$file|"
+    len=$((len + 1))
+  done
+
+  # If len is 1, set $infiles as only the ffmpeg input file,
+  #   otherwise use concat with remove last `|` character from the string.
+  # This is a fix to prevent concatenating files if there is only a single input file.
+  [[ "$len" == "1" ]] && concat="$infiles" || concat="${concat%?}"
+
+  # Set title as outfile name w/o file ext.
+  title=${outfile%.*}
+  # Use `ffmpeg` to transform input .mp3 files into audiobook format.
+  ffmpeg -i "$concat" -metadata title="$title" -metadata genre="Audiobook" \
+    -c:a libfdk_aac -b:a 64k -f mp4 "$outfile"
+
+  # try to extract cover image from first `.mp3` file if cover not set already
+  if [[ -z "$cover" ]]; then
+    first_mp3="${infiles[1]}"
+    tmp_cover_file="mp3-to-audiobook_tmp_cover.jpg"
+    if [[ -n "$first_mp3" ]]; then
+      ffmpeg -y -i "$first_mp3" -an -vcodec copy "$tmp_cover_file" &> /dev/null
+      # if ffmpeg succeeded with extracting, set cover as
+      if [[ $? == 0 ]]; then
+        cover="$tmp_cover_file"
+        auto_cover=true
+      fi
     fi
+  fi
 
-    # Set `infiles` to all arguments (except starting -o if it exists).
-    infiles="$@"
-    # If infiles is empty, then set files to all files in current directory with .mp3 extension.
-    if [ -z $infiles ]; then
-      infiles=(*.mp3)
+  #
+  if [[ -n "$cover" ]]; then
+    atomicparsley "$outfile" --artwork "$cover" --overWrite
+
+    if [[ -n "$auto_cover" ]]; then
+      rm -f "$cover"
     fi
-
-    # Loop through all arguments and concat them into string `"concat:file_1|file_2|...|file_n|"`.
-    len=0
-    concat="concat:"
-    for file in $infiles; do
-      concat="${concat}$file|"
-      len=$((len + 1))
-    done
-
-    # If len is 1, set $infiles as only the ffmpeg input file,
-    #   otherwise use concat with remove last `|` character from the string.
-    # This is a fix to prevent concatenating files if there is only a single input file.
-    [[ "$len" == "1" ]] && concat="$infiles" || concat="${concat%?}"
-
-    # Set title as outfile name w/o file ext.
-    title=${outfile%.*}
-    # Use `ffmpeg` to transform input .mp3 files into audiobook format.
-    ffmpeg -i "$concat" -metadata title="$title" -metadata genre="Audiobook" \
-      -c:a libfdk_aac -b:a 64k -f mp4 "$outfile"
   fi
 }
 
