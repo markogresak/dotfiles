@@ -9,6 +9,7 @@ cabal-install
 cairo
 chrome-cli
 chromedriver
+cloc
 cloog018
 composer
 coreutils
@@ -55,7 +56,7 @@ harfbuzz
 heroku
 highlight
 htop
-httpd24 --with-privileged-ports --with-http2
+httpd24
 icu4c
 isl
 isl011
@@ -109,6 +110,7 @@ protobuf
 pth
 python
 python3
+rabbitmq
 readline
 redis
 rlwrap
@@ -127,6 +129,7 @@ unixodbc
 unrar
 vim --with-override-system-vi
 watch
+watchman
 wget
 wxmac
 x264

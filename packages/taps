@@ -3,8 +3,10 @@ caskroom/fonts
 caskroom/versions
 codekitchen/dinghy
 homebrew/apache
+homebrew/boneyard
 homebrew/core
 homebrew/devel-only
 homebrew/dupes
 homebrew/php
+homebrew/services
 homebrew/versions

@@ -13,7 +13,7 @@ export PHANTOMJS_BIN="$NVM_BIN/phantomjs"
 # Add brew opt folder (bash, vim, gnutools) and Firefox folder (needed by Protractor).
 export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app/Contents/MacOS:$HOME/.composer/vendor/bin"
 # local paths
-docs_base_path=$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Documents
+docs_base_path=$HOME/Documents
 export docs="$docs_base_path"
 export sola="$docs_base_path/sola/3.letnik"
 export dev="$docs_base_path/projects"
