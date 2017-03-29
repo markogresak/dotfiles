@@ -5,11 +5,13 @@ autoconf
 automake
 binutils
 boost
+c-ares
 cabal-install
 cairo
 chrome-cli
 chromedriver
 cloc
+cloog
 cloog018
 composer
 coreutils
@@ -32,6 +34,7 @@ gcc49
 gdbm
 gettext
 ghc
+ghostscript
 gifsicle
 gist
 git
@@ -42,6 +45,7 @@ git-standup
 glib
 gmp
 gmp4
+gmp@4
 gnu-getopt
 gnu-indent
 gnu-sed
@@ -58,12 +62,15 @@ highlight
 htop
 httpd24
 icu4c
+imagemagick@6
 isl
 isl011
+isl@0.12
 jansson
 jemalloc
 jpeg
 lame
+less
 libass
 libassuan
 libev
@@ -74,22 +81,26 @@ libgpg-error
 libksba
 libmpc
 libmpc08
+libmpc@0.8
 libogg
 libpng
 libtasn1
 libtiff
 libtool
+libunistring
 libusb
 libusb-compat
 libvorbis
 libvpx
 libxml2
 libyaml
+little-cms2
 lua
 mcrypt
 mhash
 mpfr
 mpfr2
+mpfr@2
 mysql
 nettle
 nghttp2
@@ -98,6 +109,8 @@ openssl
 opus
 pandoc
 pcre
+phantomjs192
+phantomjs@1.92
 php-cs-fixer
 php70 --with-apache
 php70-mcrypt
@@ -110,6 +123,7 @@ protobuf
 pth
 python
 python3
+qt@5.5
 rabbitmq
 readline
 redis
@@ -136,7 +150,6 @@ x264
 x265
 xvid
 xz
-yarn
 yasm
 youtube-dl
 zlib

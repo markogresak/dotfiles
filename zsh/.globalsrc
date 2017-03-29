@@ -32,7 +32,6 @@ export sshelp=root@sshelp.gresak.io
 export lalgec="u$ID@lalgec.fri.uni-lj.si"
 # node settings
 export NODE_ENV="development"
-export PORT=3000
 # editor settings
 export EDITOR=vim
 alias sudoedit="sudo $EDITOR"
