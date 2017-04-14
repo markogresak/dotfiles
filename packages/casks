@@ -1,7 +1,7 @@
 1password
 alfred
 atom
-audacity (!)
+audacity
 betterzipql
 cleanmymac
 cleartext
@@ -22,13 +22,14 @@ google-chrome
 google-chrome-canary
 gpgtools
 graphiql
-hyperterm (!)
+hyperterm
 imageoptim
 intellij-idea
 istat-menus
 iterm2-nightly
 java
 jumpcut
+libreoffice
 linein
 little-snitch
 logitech-gaming-software
@@ -58,9 +59,10 @@ suspicious-package
 teamviewer
 the-unarchiver
 unetbootin
-utorrent (!)
+utorrent
 vagrant
 virtualbox
+visual-studio-code
 vlc
 webpquicklook
 whatpulse

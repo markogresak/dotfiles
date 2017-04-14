@@ -5,7 +5,7 @@
 
 ## paths
 
-# path to global npm packages
+# path to global yarn packages
 # browser bin locations (used by Karma runner)
 export CHROME_BIN="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 export FIREFOX_BIN="/Applications/Firefox.app/Contents/MacOS"
@@ -13,23 +13,20 @@ export PHANTOMJS_BIN="$NVM_BIN/phantomjs"
 # Add brew opt folder (bash, vim, gnutools) and Firefox folder (needed by Protractor).
 export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app/Contents/MacOS:$HOME/.composer/vendor/bin"
 # local paths
-docs_base_path=$HOME/Documents
-export docs="$docs_base_path"
-export sola="$docs_base_path/sola/3.letnik"
-export dev="$docs_base_path/projects"
-export repos="$docs_base_path/projects"
+export docs="$HOME/Documents"
+export sola="$docs/sola/3.letnik"
+
+local_projects_base_path=$HOME/LocalDocs/Projects
+export dev="$local_projects_base_path/projects"
 # path to project folder
-export proj="$docs_base_path/dlabs"
+export proj="$local_projects_base_path/dlabs"
+export atr="$proj/pamoja/pamoja-authoring-tool-react"
 
 ## globally used variables
-# student id
-export id=63130058
-export ID=$id
 # servers
 export mgresak=ubuntu@gresak.io
 export gresakio=ubuntu@gresak.io
 export sshelp=root@sshelp.gresak.io
-export lalgec="u$ID@lalgec.fri.uni-lj.si"
 # node settings
 export NODE_ENV="development"
 # editor settings
@@ -38,20 +35,20 @@ alias sudoedit="sudo $EDITOR"
 export MYVIMRC="~/.vimrc"
 
 ## aliases
-# npm install
-alias npi="npm install"
-alias npis="npm install -S"
-alias npid="npm install -D"
+# yarn install
+alias npi="yarn"
+alias npis="yarn add"
+alias npid="yarn add --dev"
 alias npig="npm install -g"
-# npm remove
-alias npr="npm rm"
-alias nprs="npm rm -S"
-alias nprd="npm rm -D"
+# yarn remove
+alias npr="yarn remove"
+alias nprs="yarn remove"
+alias nprd="yarn remove"
 alias nprg="npm rm -g"
-# npm run-script
-alias nrs="npm run-script"
-alias nps="npm start"
-# npm init -y (yes to all)
+# yarn run-script
+alias nrs="yarn run"
+alias nps="yarn start"
+# yarn init -y (yes to all)
 alias npii="npm init -y"
 # vagrant
 alias vgu="vagrant up"

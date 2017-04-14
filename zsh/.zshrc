@@ -285,9 +285,9 @@ tsdi () {
 }
 
 # Convert libreoffice's .odt document(s) to pdf.
-# Requires LibreOffice installed/linked inside $HOME/Applications.
+# Requires LibreOffice installed/linked inside /Applications.
 odttopdf () {
-  libre_office_dir=~/Applications/LibreOffice.app
+  libre_office_dir=/Applications/LibreOffice.app
   if [ -d "$libre_office_dir" ]; then
     "$libre_office_dir/Contents/MacOS/soffice" --headless --convert-to pdf $@
   else
@@ -510,3 +510,8 @@ if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
 else
     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info 2>/dev/null)
 fi
+
+
+😀 () {
+  echo "😀  😃  😄"
+}

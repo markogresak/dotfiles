@@ -31,6 +31,7 @@ fribidi
 gawk
 gcc
 gcc49
+gcc@4.9
 gdbm
 gettext
 ghc
@@ -62,9 +63,11 @@ highlight
 htop
 httpd24
 icu4c
+imagemagick
 imagemagick@6
 isl
 isl011
+isl@0.11
 isl@0.12
 jansson
 jemalloc
