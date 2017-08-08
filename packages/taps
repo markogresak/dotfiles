@@ -3,11 +3,15 @@ caskroom/drivers
 caskroom/fonts
 caskroom/versions
 codekitchen/dinghy
+dart-lang/dart
+googlechrome/simplehttp2server
 homebrew/apache
 homebrew/boneyard
 homebrew/core
 homebrew/devel-only
 homebrew/dupes
+homebrew/head-only
 homebrew/php
 homebrew/services
 homebrew/versions
+loadimpact/k6

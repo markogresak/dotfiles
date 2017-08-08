@@ -9,7 +9,7 @@ coconutbattery
 daisydisk
 dash
 discord
-docker
+docker-edge
 docker-toolbox
 dropbox
 elm-platform
@@ -21,9 +21,11 @@ gitx
 google-chrome
 google-chrome-canary
 gpgtools
+grammarly
 graphiql
 hyperterm
 imageoptim
+insomnia
 intellij-idea
 istat-menus
 iterm2-nightly

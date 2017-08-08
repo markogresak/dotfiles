@@ -39,7 +39,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-plugins=(git git-extras git-flow git-hubflow colored-man-pages npm sudo vagrant)
+plugins=(git git-extras git-flow git-hubflow colored-man-pages npm yarn sudo vagrant docker)
 # plugins=(git git-extras brew npm vagrant sudo osx atom)
 
 # PATH and other global variables
@@ -515,3 +515,6 @@ fi
 😀 () {
   echo "😀  😃  😄"
 }
+
+# added by travis gem
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh

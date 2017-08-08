@@ -14,8 +14,11 @@ chromedriver
 cloc
 cloog
 cloog018
+cmake
 composer
 coreutils
+dart
+dbus
 diff-so-fancy
 dinghy
 dirmngr
@@ -34,6 +37,8 @@ gcc
 gcc49
 gcc@4.9
 gdbm
+gdk-pixbuf
+geoip
 gettext
 ghc
 ghostscript
@@ -43,6 +48,7 @@ git
 git-extras
 git-flow
 git-fresh
+git-quick-stats
 git-standup
 glib
 gmp
@@ -52,8 +58,10 @@ gnu-getopt
 gnu-indent
 gnu-sed
 gnu-tar
+gnupg
 gnupg2
 gnutls
+go
 gobject-introspection
 gpg-agent
 grep
@@ -61,7 +69,6 @@ harfbuzz
 heroku
 highlight
 htop
-httpd24
 hunspell
 icu4c
 imagemagick
@@ -73,10 +80,12 @@ isl@0.12
 jansson
 jemalloc
 jpeg
+k6
 lame
 less
 libass
 libassuan
+libcroco
 libev
 libevent
 libffi
@@ -88,6 +97,7 @@ libmpc08
 libmpc@0.8
 libogg
 libpng
+librsvg
 libtasn1
 libtiff
 libtool
@@ -112,13 +122,12 @@ node
 npth
 openssl
 opus
+p11-kit
 pandoc
+pango
 pcre
 phantomjs192
 phantomjs@1.92
-php-cs-fixer
-php70 --with-apache
-php70-mcrypt
 pinentry
 pinentry-mac
 pixman
@@ -128,6 +137,7 @@ protobuf
 pth
 python
 python3
+qt
 qt@5.5
 rabbitmq
 readline
@@ -135,6 +145,8 @@ redis
 rlwrap
 sdl2
 selenium-server-standalone
+shared-mime-info
+simplehttp2server
 spdylay
 sqlite
 texi2html
@@ -147,7 +159,7 @@ unfs3
 unison
 unixodbc
 unrar
-vim --with-override-system-vi
+vim --with-override-system-vi --with-override-system-vi
 watch
 watchman
 wget

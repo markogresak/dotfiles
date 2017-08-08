@@ -11,16 +11,20 @@ export CHROME_BIN="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 export FIREFOX_BIN="/Applications/Firefox.app/Contents/MacOS"
 export PHANTOMJS_BIN="$NVM_BIN/phantomjs"
 # Add brew opt folder (bash, vim, gnutools) and Firefox folder (needed by Protractor).
-export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app/Contents/MacOS:$HOME/.composer/vendor/bin"
+export GOPATH=$HOME/go
+export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app/Contents/MacOS:$HOME/.composer/vendor/bin:$GOPATH/bin"
 # local paths
 export docs="$HOME/Documents"
 export sola="$docs/sola/3.letnik"
 
 local_projects_base_path=$HOME/LocalDocs/Projects
 export dev="$local_projects_base_path/projects"
+export dip="$local_projects_base_path/DIP"
 # path to project folder
-export proj="$local_projects_base_path/dlabs"
-export atr="$proj/pamoja/pamoja-authoring-tool-react"
+export dlabs_proj="$local_projects_base_path/dlabs"
+export pamoja_docker="$dlabs_proj/pamoja"
+export proj="$pamoja_docker/workspace";
+export atr="$proj/pamoja-authoring-tool-react"
 
 ## globally used variables
 # servers
@@ -78,6 +82,9 @@ alias bcui="brew cask uninstall"
 # foreman
 alias fs="foreman start"
 alias fsl="foreman start -f Procfile.local"
+# pamoja docker
+alias pamoja="$pamoja_docker/bin/compose"
+alias pj=pamoja
 # merge pdf (OS X)
 alias mergepdf="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
 # python
