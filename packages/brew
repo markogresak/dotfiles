@@ -117,7 +117,6 @@ mpfr2
 mpfr@2
 mysql
 nettle
-nghttp2
 node
 npth
 openssl
@@ -146,7 +145,6 @@ rlwrap
 sdl2
 selenium-server-standalone
 shared-mime-info
-simplehttp2server
 spdylay
 sqlite
 texi2html
