@@ -1,7 +1,6 @@
 1password
 alfred
 atom
-audacity
 betterzipql
 cleanmymac
 cleartext
@@ -14,6 +13,7 @@ docker-toolbox
 dropbox
 elm-platform
 firefox
+flume
 flux
 font-hack
 github-desktop
@@ -23,7 +23,6 @@ google-chrome-canary
 gpgtools
 grammarly
 graphiql
-hyperterm
 imageoptim
 insomnia
 intellij-idea
@@ -39,6 +38,7 @@ mactex
 megasync
 messenger
 mysqlworkbench
+ngrok
 postgres
 postico
 qlcolorcode
@@ -61,10 +61,10 @@ suspicious-package
 teamviewer
 the-unarchiver
 unetbootin
-utorrent
 vagrant
 virtualbox
 visual-studio-code
 vlc
+vnc-viewer
 webpquicklook
 whatpulse

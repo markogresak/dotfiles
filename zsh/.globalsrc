@@ -7,12 +7,13 @@
 
 # path to global yarn packages
 # browser bin locations (used by Karma runner)
+export GPG_TTY=$(tty)
 export CHROME_BIN="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 export FIREFOX_BIN="/Applications/Firefox.app/Contents/MacOS"
 export PHANTOMJS_BIN="$NVM_BIN/phantomjs"
 # Add brew opt folder (bash, vim, gnutools) and Firefox folder (needed by Protractor).
 export GOPATH=$HOME/go
-export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app/Contents/MacOS:$HOME/.composer/vendor/bin:$GOPATH/bin"
+export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app/Contents/MacOS:$HOME/.composer/vendor/bin:$GOPATH/bin:$HOME/.cabal/bin"
 # local paths
 export docs="$HOME/Documents"
 export sola="$docs/sola/3.letnik"
@@ -85,6 +86,7 @@ alias fsl="foreman start -f Procfile.local"
 # pamoja docker
 alias pamoja="$pamoja_docker/bin/compose"
 alias pj=pamoja
+alias vnc="/Applications/VNC\ Viewer.app/Contents/MacOS/vncviewer"
 # merge pdf (OS X)
 alias mergepdf="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
 # python
