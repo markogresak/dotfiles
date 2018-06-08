@@ -1,11 +1,12 @@
-caskroom/cask
-caskroom/drivers
-caskroom/fonts
-caskroom/versions
 codekitchen/dinghy
 dart-lang/dart
+heroku/brew
 homebrew/apache
 homebrew/boneyard
+homebrew/cask
+homebrew/cask-drivers
+homebrew/cask-fonts
+homebrew/cask-versions
 homebrew/core
 homebrew/devel-only
 homebrew/dupes
@@ -14,3 +15,4 @@ homebrew/php
 homebrew/services
 homebrew/versions
 loadimpact/k6
+miktex/miktex

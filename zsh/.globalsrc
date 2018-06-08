@@ -8,12 +8,13 @@
 # path to global yarn packages
 # browser bin locations (used by Karma runner)
 export GPG_TTY=$(tty)
+#export CC=gcc-7
 export CHROME_BIN="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 export FIREFOX_BIN="/Applications/Firefox.app/Contents/MacOS"
 export PHANTOMJS_BIN="$NVM_BIN/phantomjs"
 # Add brew opt folder (bash, vim, gnutools) and Firefox folder (needed by Protractor).
 export GOPATH=$HOME/go
-export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app/Contents/MacOS:$HOME/.composer/vendor/bin:$GOPATH/bin:$HOME/.cabal/bin"
+export PATH="$PATH:/usr/local/opt:/usr/local/sbin:$HOME/Applications/Firefox.app/Contents/MacOS:$HOME/.composer/vendor/bin:$GOPATH/bin:$HOME/.cabal/bin:/Library/TeX/texbin"
 # local paths
 export docs="$HOME/Documents"
 export sola="$docs/sola/3.letnik"
@@ -26,6 +27,7 @@ export dlabs_proj="$local_projects_base_path/dlabs"
 export pamoja_docker="$dlabs_proj/pamoja"
 export proj="$pamoja_docker/workspace";
 export atr="$proj/pamoja-authoring-tool-react"
+export ppf="$proj/pamoja-panel-frontend"
 
 ## globally used variables
 # servers
@@ -62,7 +64,7 @@ alias vgh="vagrant halt"
 alias vgd="vagrant destroy"
 alias vst="vagrant status"
 #git
-alias gcd="git checkout develop"
+alias gcd="git checkout demo"
 alias gfr="git fresh"
 alias gsta="git stash"
 # github client

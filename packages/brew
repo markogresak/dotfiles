@@ -5,6 +5,8 @@ arpack
 atomicparsley
 autoconf
 automake
+awscli
+bdw-gc
 binutils
 boost
 c-ares
@@ -12,11 +14,14 @@ cabal-install
 cairo
 chrome-cli
 chromedriver
+clib
 cloc
 cloog
 cmake
 composer
 coreutils
+cpptest
+crystal-lang
 dart
 dbus
 diff-so-fancy
@@ -55,7 +60,6 @@ git-extras
 git-flow
 git-fresh
 git-quick-stats
-git-standup
 gl2ps
 glib
 glpk
@@ -77,6 +81,7 @@ grep
 harfbuzz
 hdf5
 heroku
+heroku-node
 highlight
 htop
 hunspell
@@ -101,6 +106,7 @@ libevent
 libffi
 libgcrypt
 libgpg-error
+libidn2
 libksba
 libmpc
 libmpc@0.8
@@ -118,11 +124,15 @@ libvorbis
 libvpx
 libxml2
 libyaml
+libzzip
 little-cms2
+llvm
+log4cxx
 lua
 mcrypt
 metis
 mhash
+miktex
 mpfr
 mpfr@2
 mysql
@@ -138,14 +148,17 @@ p11-kit
 pandoc
 pango
 pcre
+perl
 phantomjs@1.92
 pinentry
 pinentry-mac
 pixman
 pkg-config
 plotutils
+popt
 portaudio
 postgresql
+potrace
 protobuf
 pstoedit
 pth
@@ -159,6 +172,7 @@ rabbitmq
 readline
 redis
 rlwrap
+ruby
 sdl2
 selenium-server-standalone
 shared-mime-info
@@ -176,8 +190,9 @@ unfs3
 unison
 unixodbc
 unrar
+uriparser
 veclibfort
-vim --with-override-system-vi
+vim --with-override-system-vi --with-override-system-vi
 watch
 watchman
 webp

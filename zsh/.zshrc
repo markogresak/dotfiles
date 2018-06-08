@@ -85,6 +85,29 @@ alias ohmyzsh="atom ~/.oh-my-zsh"
 # }
 # alias ssh="colorssh"
 
+########################################################
+###################### ENV CONFIG ######################
+########################################################
+
+# added by travis gem
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+
+node_vesion_path="$(npm config get prefix)"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f $node_vesion_path/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . $node_vesion_path/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f $node_vesion_path/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . $node_vesion_path/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# added by travis gem
+[ -f /Users/markogresak/.travis/travis.sh ] && source /Users/markogresak/.travis/travis.sh
+
+########################################################
+########################################################
+########################################################
+
 # check for $proj value and cd if set.
 cdproj () {
   if [[ -n "$proj" ]]; then
@@ -117,7 +140,7 @@ cloneorg () {
   local PERL_SIGNALS="unsafe"
   for i in "$@"; do
     mkc $i
-    curl -s "https://api.github.com/orgs/$i/repos" |
+    curl -H "Authorization: Bearer $GITHUB_TOKEN" -s "https://api.github.com/orgs/$i/repos?per_page=250" |
       perl -ne '(system("zsh", "-c", "echo \"Cloning into \\\"$1\\\"...\";
           { git clone -q https://github.com/$1 || exit 1 } &") == 0
             or die "Error occured while cloning.")
@@ -493,6 +516,22 @@ git-pull-all () {
 
 alias glal=git-pull-all
 
+
+touchp () {
+  mkdir -p "$(dirname "$1")"
+  touch "$1"
+}
+
+git-checkout-merge-demo () {
+  git checkout -b "merge-demo/$(git rev-parse --abbrev-ref HEAD)"
+}
+
+alias gcomd=git-checkout-merge-demo
+
+git-prs() {
+  node "$dev/get-repo-prs/index.js"
+}
+
 # load NVM (Node Version Manager) script
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
@@ -510,11 +549,3 @@ if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
 else
     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info 2>/dev/null)
 fi
-
-
-😀 () {
-  echo "😀  😃  😄"
-}
-
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
