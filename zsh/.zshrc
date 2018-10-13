@@ -39,12 +39,12 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-plugins=(git git-extras git-flow git-hubflow colored-man-pages npm yarn sudo vagrant docker)
+plugins=(git git-extras colored-man-pages npm sudo docker)
 # plugins=(git git-extras brew npm vagrant sudo osx atom)
 
 # PATH and other global variables
-source ~/.globalsrc
 source ~/.secretrc
+source ~/.globalsrc
 # history size
 HISTFILESIZE=25000
 
@@ -532,6 +532,35 @@ git-prs() {
   node "$dev/get-repo-prs/index.js"
 }
 
+light() {
+  local arg data
+  arg="$1"
+  data="$LIGHT_DATA"
+  if [[ "$arg" == "on" ]] || [[ "$arg" == "off" ]]; then
+    data="$data&arg=$arg"
+  fi
+  curl "$LIGHT_URL" --data "$data"
+}
+
+alias grep="ggrep"
+
+regen-errs() {
+  npm run lint -- --quiet -f unix > errors
+  cat errors | grep -oP '(?<=\[).*?(?=\])' | sort > errors-to-fix
+  cat errors-to-fix | sort | uniq -c | sort -d > errors-count
+}
+
+find-errs() {
+  cat errors | grep -i "$1" | grep -oP '.*?\.jsx?(?=:)' | sort | uniq
+}
+
+bump-migrations() {
+  $pp/bump-migrations.sh
+}
+
+export DID_FILE="$HOME/did.txt";
+alias did="vim +'normal Go' +'r!date' $DID_FILE"
+
 # load NVM (Node Version Manager) script
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
@@ -540,8 +569,6 @@ source "$HOME/.iterm2_shell_integration.zsh"
 # eval "$(rbenv init -)"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-alias grep="ggrep"
 
 if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
     source ~/.gnupg/.gpg-agent-info

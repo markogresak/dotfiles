@@ -21,13 +21,12 @@ export sola="$docs/sola/3.letnik"
 
 local_projects_base_path=$HOME/LocalDocs/Projects
 export dev="$local_projects_base_path/projects"
-export dip="$local_projects_base_path/DIP"
 # path to project folder
-export dlabs_proj="$local_projects_base_path/dlabs"
-export pamoja_docker="$dlabs_proj/pamoja"
-export proj="$pamoja_docker/workspace";
 export atr="$proj/pamoja-authoring-tool-react"
-export ppf="$proj/pamoja-panel-frontend"
+export pp="$local_projects_base_path/prezly"
+export pd="$pp/prezly"
+export wd="$pp/prezly/apps/backend"
+alias wd="cd $wd"
 
 ## globally used variables
 # servers
@@ -42,27 +41,20 @@ alias sudoedit="sudo $EDITOR"
 export MYVIMRC="~/.vimrc"
 
 ## aliases
-# yarn install
-alias npi="yarn"
-alias npis="yarn add"
-alias npid="yarn add --dev"
+alias npi="npm i"
+alias npis="npm i --save"
+alias npid="npm i --save-dev"
 alias npig="npm install -g"
-# yarn remove
-alias npr="yarn remove"
-alias nprs="yarn remove"
-alias nprd="yarn remove"
+# npm remove
+alias npr="npm rm"
+alias nprs="npm rm --save"
+alias nprd="npm rm --save-dev"
 alias nprg="npm rm -g"
-# yarn run-script
-alias nrs="yarn run"
-alias nps="yarn start"
-# yarn init -y (yes to all)
+# npm run-script
+alias nrs="npm run"
+alias nps="npm start"
+# npm init -y (yes to all)
 alias npii="npm init -y"
-# vagrant
-alias vgu="vagrant up"
-alias vgs="vagrant ssh"
-alias vgh="vagrant halt"
-alias vgd="vagrant destroy"
-alias vst="vagrant status"
 #git
 alias gcd="git checkout demo"
 alias gfr="git fresh"
@@ -85,14 +77,14 @@ alias bcui="brew cask uninstall"
 # foreman
 alias fs="foreman start"
 alias fsl="foreman start -f Procfile.local"
-# pamoja docker
-alias pamoja="$pamoja_docker/bin/compose"
-alias pj=pamoja
-alias vnc="/Applications/VNC\ Viewer.app/Contents/MacOS/vncviewer"
+# docker
+alias prezly=docker-sync-stack
 # merge pdf (OS X)
 alias mergepdf="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
 # python
 alias py=python3
+# prezly
+alias plint="$pp/plint.sh $wd $pp"
 
 ## config
 export LC_ALL=en_US.UTF-8

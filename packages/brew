@@ -18,21 +18,25 @@ clib
 cloc
 cloog
 cmake
+cocoapods
 composer
 coreutils
 cpptest
+crystal
 crystal-lang
 dart
 dbus
 diff-so-fancy
 dinghy
 dirmngr
+dnsmasq
 doxygen
 elixir
 elm
 epstool
 erlang
 erlang@19
+exiftool
 fdk-aac
 ffmpeg --with-fdk-aac --with-libass --with-sdl2 --with-x265 --with-freetype --with-libvorbis --with-libvpx --with-opus
 fftw
@@ -43,6 +47,7 @@ fltk
 fontconfig
 freetype
 fribidi
+fswatch
 gawk
 gcc
 gcc@4.9
@@ -189,6 +194,7 @@ uncrustify
 unfs3
 unison
 unixodbc
+unox
 unrar
 uriparser
 veclibfort

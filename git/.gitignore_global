@@ -254,3 +254,6 @@ jspm_packages
 erl_crash.dump
 *.ez
 *.beam
+
+# Prezly
+web/public/backend
