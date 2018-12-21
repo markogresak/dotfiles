@@ -38,7 +38,7 @@ erlang
 erlang@19
 exiftool
 fdk-aac
-ffmpeg --with-fdk-aac --with-libass --with-sdl2 --with-x265 --with-freetype --with-libvorbis --with-libvpx --with-opus
+ffmpeg --with-fdk-aac --with-libass --with-sdl2 --with-x265 --with-freetype --with-libvorbis --with-libvpx --with-opus --with-fdk-aac --with-libass --with-freetype
 fftw
 fig2dev
 findutils
@@ -141,6 +141,7 @@ miktex
 mpfr
 mpfr@2
 mysql
+nasm
 nettle
 node
 npth
@@ -153,6 +154,7 @@ p11-kit
 pandoc
 pango
 pcre
+pcre2
 perl
 phantomjs@1.92
 pinentry
@@ -169,6 +171,7 @@ pstoedit
 pth
 python
 python3
+python@2
 qhull
 qrupdate
 qt
@@ -181,12 +184,16 @@ ruby
 sdl2
 selenium-server-standalone
 shared-mime-info
+snappy
 spdylay
+sphinx-doc
 sqlite
 suite-sparse
 szip
+telnet
 texi2html
 the_silver_searcher
+theora
 translate-shell
 tree
 unar
@@ -208,7 +215,6 @@ x264
 x265
 xvid
 xz
-yarn
 yasm
 youtube-dl
 zlib

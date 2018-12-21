@@ -555,7 +555,11 @@ find-errs() {
 }
 
 bump-migrations() {
-  $pp/bump-migrations.sh
+  $pp/bump-migrations.sh $@
+}
+
+prezly-bump-assets() {
+  $HOME/LocalDocs/Projects/projects/prezly-bump-assets/prezly-bump-assets.js
 }
 
 export DID_FILE="$HOME/did.txt";

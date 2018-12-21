@@ -77,12 +77,10 @@ alias bcui="brew cask uninstall"
 # foreman
 alias fs="foreman start"
 alias fsl="foreman start -f Procfile.local"
-# docker
-alias prezly=docker-sync-stack
 # merge pdf (OS X)
 alias mergepdf="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
 # python
-alias py=python3
+alias py=python3.7
 # prezly
 alias plint="$pp/plint.sh $wd $pp"
 
