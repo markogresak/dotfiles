@@ -2,5 +2,4 @@
 
 config_files=(
   '~/.zshrc'
-  '~/.globalsrc'
 )
