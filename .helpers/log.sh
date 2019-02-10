@@ -42,7 +42,7 @@ function set_color_by_operation {
     brew) color=$yellow ;;
     npm) color=$green ;;
     zsh) color=$cyan ;;
-    editor) color=$light_blue ;;
+    vim) color=$light_blue ;;
     git) color=$light_magenta ;;
     *) color=$default_color ;;
   esac
