@@ -1,12 +1,14 @@
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+[credential]
+	helper = osxkeychain
 [user]
 	name = Marko Grešak
-	email = gresak.marko@gmail.com
+	email = marko@gresak.io
 	editor = vim
 	signingkey = 534C8F2248DA2309
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
 [core]
 	editor = vim
 	excludesfile = /Users/markogresak/.gitignore_global
@@ -16,41 +18,15 @@
 	ui = true
 [push]
 	default = current
+[pull]
+	default = current
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
 	required = true
-[alias]
-  co = checkout
-  ec = config --global -e
-  up = !git pull --rebase --prune $@ && git submodule update --init --recursive
-  cob = checkout -b
-  cm = !git add -A && git commit -m
-  save = !git add -A && git commit -m 'SAVEPOINT'
-  wip = !git add -u && git commit -m "WIP"
-  undo = reset HEAD~1 --mixed
-  amend = commit -a --amend
-  wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
-  bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
-  bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
-	pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
-	pr-clean = "!git for-each-ref refs/heads/pr/* --format=\"%(refname)\" | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
-[credential]
-	helper = osxkeychain
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.5.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[pull]
-	default = current
-[commit]
-	gpgsign = true
-[gpg]
-	program = /usr/local/bin/gpg
+
