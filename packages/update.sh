@@ -2,8 +2,7 @@
 
 function update_brew {
   eval ../.helpers/log.sh "brew" "Updating formulas..."
-  # for each brew command, check if it was built from source with special flags
-  brew list -1 | xargs -n1 bash -c 'echo $1 $(brew info $1 | ggrep "Built from source" | ggrep -oP "(?<=with: )(.*)$")' bash > brew
+  brew list -1 > brew
   eval ../.helpers/log.sh "brew" "Formulas updated."
 }
 
