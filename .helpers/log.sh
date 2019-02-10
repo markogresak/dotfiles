@@ -41,12 +41,9 @@ function set_color_by_operation {
   case $operation in
     brew) color=$yellow ;;
     npm) color=$green ;;
-    ruby) color=$red ;;
     zsh) color=$cyan ;;
     editor) color=$light_blue ;;
     git) color=$light_magenta ;;
-    css) color=$light_cyan ;;
-    js) color=$light_yellow ;;
     *) color=$default_color ;;
   esac
 }
