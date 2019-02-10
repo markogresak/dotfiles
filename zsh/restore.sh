@@ -1,8 +1,5 @@
 #!/bin/bash
 
-touch ~/.secretrc
-eval ../.helpers/log.sh "zsh" "Please restore ~/.secretrc manually."
-
 install_zsh_log="install_zsh.log"
 
 function install_zsh {
