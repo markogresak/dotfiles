@@ -2,5 +2,6 @@
 
 config_files=(
   '~/.editorconfig'
+  '~/.prettierrc'
   '~/.vimrc'
 )
