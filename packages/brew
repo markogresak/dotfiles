@@ -3,6 +3,8 @@ cairo
 cloc
 diff-so-fancy
 dnsmasq
+elixir
+erlang
 ffmpeg
 flac
 fontconfig
@@ -21,6 +23,7 @@ harfbuzz
 hexyl
 icu4c
 jpeg
+jq
 lame
 leptonica
 libass
@@ -39,6 +42,7 @@ libvpx
 little-cms2
 nettle
 nvm
+oniguruma
 opencore-amr
 openjpeg
 openssl
@@ -48,6 +52,7 @@ pcre
 pixman
 python
 readline
+rsync
 rtmpdump
 rubberband
 sdl2
@@ -59,6 +64,7 @@ the_silver_searcher
 theora
 tree
 webp
+wxmac
 x264
 x265
 xvid

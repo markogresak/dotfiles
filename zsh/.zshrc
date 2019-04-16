@@ -64,18 +64,29 @@ alias other="$projects_path/other"
 
 alias wd="alias | grep -E \"\w+='~\" | sed \"s/'//g\" | sed 's/=/ => /'"
 
-# Export each alias (detected by `wd`) as a variable named after the alias.
-while read path_alias; do
-  local path_export=$(echo $path_alias | sed 's/ => /=/')
-  local export_name=$(echo $path_export | cut -d= -f1)
-  if env | grep -q "^$export_name="; then
-    echo "Conflict: Tried to export $path_export, but it would overwrite env variable $export_name. Skipped."
-  else
-    eval "export $path_export"
-  fi
-done <<< $(wd)
-unset path_export
-unset export_name
+if [[ -z $_PATH_ALIASES_EXPORTED_ ]]; then
+    # Export each alias (detected by `wd`) as a variable named after the alias.
+    while read path_alias; do
+    local path_export=$(echo $path_alias | sed 's/ => /=/')
+    local export_name=$(echo $path_export | cut -d= -f1)
+    if env | grep -q "^$export_name="; then
+        echo "Conflict: Tried to export $path_export, but it would overwrite env variable $export_name. Skipped."
+    else
+        eval "export $path_export"
+    fi
+    done <<< $(wd)
+    unset path_export
+    unset export_name
+    export _PATH_ALIASES_EXPORTED_=true
+fi
 
 alias mergepdf="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
 
+function hgg {
+    omz_history | grep "$@"
+}
+
+# alias up="docker-sync start ; docker-compose -f docker-compose.yml -f docker-compose-osx.yml up -d"
+alias up="docker-sync-stack start"
+
+alias gpo="gp ; gopn"
