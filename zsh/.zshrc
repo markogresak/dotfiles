@@ -10,56 +10,44 @@ HYPHEN_INSENSITIVE="true"
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+# Disable marking untracked VCS files as dirty.
+# This makes repository status check for large repositories much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
   sudo
 )
 
 source $ZSH/oh-my-zsh.sh
+alias zshconfig="$EDITOR ~/.zshrc"
+alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# ssh
 export SSH_KEY_PATH="~/.ssh/id_rsa"
 
 export EDITOR="code"
-export NODE_ENV="development"
-# export GPG_TTY=$(tty)
 
-alias zshconfig="$EDITOR ~/.zshrc"
-alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
-alias gopn="git-open"
+export NODE_ENV="development"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export PATH="/usr/local/sbin:$PATH"
+export GEM_HOME="~/.gem"
+export GEM_PATH="~/.gem"
+export PATH="/usr/local/sbin:$PATH:$GEM_PATH/bin"
 
+# path alises (inspired by wd)
 local projects_path="~/Projects"
-
 alias projects="$projects_path"
 alias prezly="$projects_path/prezly/prezly"
 alias backend="$projects_path/prezly/prezly/apps/backend"
 alias press="$projects_path/prezly/prezly/apps/press"
 alias website="$projects_path/prezly/website"
-alias admin="$projects_path/prezly/admin-ui"
 alias other="$projects_path/other"
 
 alias wd="alias | grep -E \"\w+='~\" | sed \"s/'//g\" | sed 's/=/ => /'"
@@ -80,13 +68,20 @@ if [[ -z $_PATH_ALIASES_EXPORTED_ ]]; then
     export _PATH_ALIASES_EXPORTED_=true
 fi
 
-alias mergepdf="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
+function nvm_use_on_cd() {
+  nvm use 2>&1 > /dev/null || true
+}
+# run on every cd
+chpwd_functions=(${chpwd_functions[@]} "nvm_use_on_cd")
+# run when .zshrc initially loads
+nvm_use_on_cd
 
-function hgg {
+# quick way to grep history
+function h {
     omz_history | grep "$@"
 }
 
-# alias up="docker-sync start ; docker-compose -f docker-compose.yml -f docker-compose-osx.yml up -d"
-alias up="docker-sync-stack start"
+alias mergepdf="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
 
+alias gopn="git-open"
 alias gpo="gp ; gopn"
