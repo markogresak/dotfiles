@@ -37,8 +37,8 @@ export NVM_DIR="$HOME/.nvm"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export GEM_HOME="~/.gem"
-export GEM_PATH="~/.gem"
+export GEM_HOME="$HOME/.gem"
+export GEM_PATH="$HOME/.gem"
 export PATH="/usr/local/sbin:$PATH:$GEM_PATH/bin"
 
 # path alises (inspired by wd)
@@ -49,6 +49,7 @@ alias backend="$projects_path/prezly/prezly/apps/backend"
 alias press="$projects_path/prezly/prezly/apps/press"
 alias website="$projects_path/prezly/website"
 alias other="$projects_path/other"
+alias blog="$projects_path/other/markogresak.github.io"
 
 alias wd="alias | grep -E \"\w+='~\" | sed \"s/'//g\" | sed 's/=/ => /'"
 
@@ -68,8 +69,8 @@ if [[ -z $_PATH_ALIASES_EXPORTED_ ]]; then
     export _PATH_ALIASES_EXPORTED_=true
 fi
 
-function nvm_use_on_cd() {
-  nvm use 2>&1 > /dev/null || true
+function nvm_use_on_cd {
+  nvm use > /dev/null 2>&1 || true
 }
 # run on every cd
 chpwd_functions=(${chpwd_functions[@]} "nvm_use_on_cd")
