@@ -8,8 +8,9 @@ http-server@0.11.1
 json-server@0.14.2
 nodemon@1.18.10
 np@4.0.2
-npm@6.10.0
 npm-check-updates@3.1.8
+npm@6.10.0
+npm@6.11.3
 react-devtools@3.6.1
 react-js-to-ts@1.4.0
 react-native-cli@2.0.1
