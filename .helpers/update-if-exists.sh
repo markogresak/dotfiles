@@ -2,7 +2,7 @@
 
 file_path="$1"
 
-if [ -f "$file_path" ]; then
+if [ -f "$file_path" ] || [ -d "$file_path" ]; then
   cp -r "$file_path" ./
   eval ../.helpers/log.sh "config_files" "Updated $file_path."
   exit 0
