@@ -14,7 +14,7 @@ function update_cask {
 
 function update_taps {
   eval ../.helpers/log.sh "brew" "Updating taps..."
-  brew tap --list > taps
+  brew tap > taps
   eval ../.helpers/log.sh "brew" "Taps updated."
 }
 
