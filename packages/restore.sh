@@ -57,7 +57,7 @@ function install_npm {
     eval ../.helpers/log.sh "npm" "npm not installed. Installing latest version of node and npm now..."
 
     if hash nvm 2>/dev/null; then
-      nvm install $(nvm ls-remote | grep -oE '(v\d+.\d+.\d+)' | tail -1) &> $install_npm_log
+      nvm install --lts &> $install_npm_log
       eval ../.helpers/log.sh "npm" "Latest version of node and npm installed."
     else
       eval ../.helpers/log.sh "npm" "Unable to install npm, nvm was not found!" "error"
