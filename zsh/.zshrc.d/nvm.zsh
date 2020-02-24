@@ -8,3 +8,6 @@ export NVM_DIR="$HOME/.nvm"
 # }
 # # run on every cd
 # chpwd_functions=(${chpwd_functions[@]} "nvm_use_on_cd")
+
+# A workaround to setting node path because `nvm use` is slow
+PATH="$PATH:$NVM_DIR/versions/node/v12.14.0/bin"

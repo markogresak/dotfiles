@@ -1,4 +1,4 @@
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/sbin:/usr/local/opt/opencv@2/bin:$PATH"
 
 HISTFILESIZE=25000
 
