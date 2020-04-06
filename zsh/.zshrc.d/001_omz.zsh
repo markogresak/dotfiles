@@ -1,5 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+THEME_CHAR="ω"
 ZSH_THEME="robbyrussell-custom"
 
 # Case-sensitive completion must be off. _ and - will be interchangeable.
