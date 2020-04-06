@@ -1,4 +1,6 @@
-export PATH="/usr/local/sbin:/usr/local/opt/opencv@2/bin:$PATH"
+export BREW_PATH="$HOME/homebrew"
+export PATH="/usr/local/sbin:$PATH:$BREW_PATH/bin"
+export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
 
 HISTFILESIZE=25000
 
