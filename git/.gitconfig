@@ -2,7 +2,7 @@
 	name = Marko Grešak
 	email = marko@gresak.io
 	editor = vim
-	signingkey = 765C0639463CDE24
+	signingkey = 21174B2E9D38BAC1
 [commit]
 	gpgsign = true
 [gpg]
