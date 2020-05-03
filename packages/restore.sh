@@ -12,7 +12,7 @@ function install_nvm {
   else
     eval ../.helpers/log.sh "npm" "nvm not installed. Installing nvm now..."
 
-    curl -so- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash &> $install_nvm_log
+    curl -so- ttps://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash &> $install_nvm_log
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
