@@ -2,6 +2,8 @@
 
 file_path="$1"
 
+rm -rf "./$(basename $file_path)"
+
 if [ -f "$file_path" ] || [ -d "$file_path" ]; then
   cp -r "$file_path" ./
   eval ../.helpers/log.sh "config_files" "Updated $file_path."
