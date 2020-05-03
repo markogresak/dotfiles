@@ -1,17 +1,15 @@
-[credential]
-	helper = osxkeychain
 [user]
 	name = Marko Grešak
 	email = marko@gresak.io
 	editor = vim
-	signingkey = 534C8F2248DA2309
+	signingkey = 765C0639463CDE24
 [commit]
 	gpgsign = true
 [gpg]
-	program = /usr/local/bin/gpg
+	program = /usr/bin/gpg
 [core]
 	editor = vim
-	excludesfile = /Users/markogresak/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	autocrlf = input
 	pager = diff-so-fancy | less --tabs=2 -RFX
 [color]
@@ -29,4 +27,3 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-

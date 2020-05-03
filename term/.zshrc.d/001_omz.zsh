@@ -13,6 +13,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
   git
   sudo
+  fzf
 )
 
 source $ZSH/oh-my-zsh.sh
