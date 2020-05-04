@@ -13,7 +13,7 @@ function git-open {
       if [[ -n $print ]]; then
           echo $url
       else
-          xdg-open $url &>1 > /dev/null
+          xdg-open $url > /dev/null
       fi
   }
 
