@@ -8,3 +8,5 @@ export SSH_KEY_PATH="$HOME/.ssh/id_rsa"
 export EDITOR="vim"
 
 export NODE_ENV="development"
+
+export PATH="$PATH:$HOME/.local/bin"
