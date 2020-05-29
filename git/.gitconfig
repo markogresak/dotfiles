@@ -4,7 +4,7 @@
 	name = Marko Grešak
 	email = marko@gresak.io
 	editor = vim
-	signingkey = 534C8F2248DA2309
+	signingkey = 540A397B4A9D7B5D
 [commit]
 	gpgsign = true
 [gpg]
@@ -13,7 +13,9 @@
 	editor = vim
 	excludesfile = /Users/markogresak/.gitignore_global
 	autocrlf = input
-	pager = diff-so-fancy | less --tabs=2 -RFX
+	pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Nord'
+[interactive]
+    diffFilter = delta --color-only
 [color]
 	ui = true
 [push]

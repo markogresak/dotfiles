@@ -1,6 +1,4 @@
-export BREW_PATH="$HOME/homebrew"
-export PATH="/usr/local/sbin:$PATH:$BREW_PATH/bin"
-export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
+export PATH="/usr/local/sbin:$PATH"
 
 HISTFILESIZE=25000
 

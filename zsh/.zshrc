@@ -5,3 +5,4 @@ for FN in $HOME/.zshrc.d/*.zsh; do
     # end=$(( $(gdate +%s%N) /1000000 ))
     # echo "delta $(( end - start ))"
 done
+
