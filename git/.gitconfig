@@ -11,7 +11,7 @@
 	program = /usr/local/bin/gpg
 [core]
 	editor = vim
-	excludesfile = /Users/markogresak/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	autocrlf = input
 	pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Nord'
 [interactive]

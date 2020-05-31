@@ -27,10 +27,10 @@ set magic
 nnoremap <leader><space> :nohlsearch<CR>
 
 " Enable spell check (`z=` to show corrections)
-set spelllang=en_us
+set spell spelllang=en_us
 " Check spelling only in insert mode.
-autocmd InsertEnter * setlocal spell
-autocmd InsertLeave * setlocal nospell
+" autocmd InsertEnter * setlocal spell
+" autocmd InsertLeave * setlocal nospell
 " Use c-N in insert mode to complete word
 set complete+=kspell
 
