@@ -1,6 +1,17 @@
+function xopen {
+  if hash open 2>/dev/null; then
+    open "$@"
+  elif hash xdg-open 2>/dev/null; then
+    xdg-open "$@"
+  else
+    >&2 echo 'xopen: No known way to "open" on your system.'
+    return 1
+  fi
+}
+
 function git-open {
   # Open current repository remote in browser.
-  # Requires `xdg-open` command to open the url in browser
+  # Requires `open` (macOS) `xdg-open` (Ubuntu) command to open the url in browser
 
   # Display error message if not located in git repository.
   if ! $(git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
@@ -13,7 +24,7 @@ function git-open {
       if [[ -n $print ]]; then
           echo $url
       else
-          xdg-open $url > /dev/null
+          xopen $url > /dev/null
       fi
   }
 
@@ -43,3 +54,5 @@ function git-open {
       >&2 echo "No match for remote '$remote'."
   fi
 }
+
+alias gopn=git-open
