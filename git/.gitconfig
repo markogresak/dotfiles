@@ -13,7 +13,7 @@
 	editor = vim
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
-	pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Nord'
+	pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended Bright'
 [interactive]
     diffFilter = delta --color-only
 [color]
