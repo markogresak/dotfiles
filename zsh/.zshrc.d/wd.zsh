@@ -27,3 +27,5 @@ if [[ -z $_PATH_ALIASES_EXPORTED_ ]]; then
     # set a flag to prevent subsequent exports (creates conflicts)
     export _PATH_ALIASES_EXPORTED_=true
 fi
+
+export LD_LIBRARY_PATH="/Users/markogresak/Projects/other/opencvsharp/src/build/OpenCvSharpExtern"
