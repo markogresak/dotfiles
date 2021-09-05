@@ -6,12 +6,6 @@ function update_brew {
   eval ../.helpers/log.sh "brew" "Formulas updated."
 }
 
-function update_cask {
-  eval ../.helpers/log.sh "brew" "Updating casks..."
-  brew cask list -1 > casks
-  eval ../.helpers/log.sh "brew" "Casks updated."
-}
-
 function update_taps {
   eval ../.helpers/log.sh "brew" "Updating taps..."
   brew tap > taps
@@ -28,7 +22,6 @@ function update_npm {
 brew update > /dev/null
 
 update_brew &
-update_cask &
 update_taps &
 update_npm &
 wait

@@ -6,7 +6,6 @@ install_rvm_log="install_rvm.log"
 install_npm_log="install_npm.log"
 restore_taps_log="restore_taps.log"
 restore_brew_log="restore_brew.log"
-restore_cask_log="restore_cask.log"
 restore_npm_log="restore_npm.log"
 
 function install_brew {
@@ -77,12 +76,6 @@ function restore_brew {
   eval ../.helpers/log.sh "brew" "Formulas restored."
 }
 
-function restore_cask {
-  eval ../.helpers/log.sh "brew" "Restoring casks..."
-  cat ./casks | xargs brew cask install &> $restore_cask_log
-  eval ../.helpers/log.sh "brew" "Casks restored."
-}
-
 function restore_npm {
   eval ../.helpers/log.sh "npm" "Restoring global modules..."
   cat ./npm | xargs npm install -g &> $restore_npm_log
@@ -92,9 +85,7 @@ function restore_npm {
 function brew_all {
   install_brew
   restore_taps
-  restore_brew &
-  restore_cask &
-  wait
+  restore_brew
 }
 
 function node_all {

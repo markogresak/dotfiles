@@ -18,7 +18,7 @@ A very basic Vim config using native vim 8 package manager (see `:help packages`
 
 ### packages
 
-Lists of packages and apps installed via [Homebrew][brew], [Homebrew Cask][cask] and [npm][npm]. Also a reference list of Homebrew taps added, to enable automatic packages restore.
+Lists of packages and apps installed via [Homebrew][brew] and [npm][npm]. Also a reference list of Homebrew taps added, to enable automatic packages restore.
 
 ## Notes
 
@@ -34,5 +34,4 @@ Not supported in brew v2.0. Best option is to hope for sensible defaults.
 [vim-sensible]: https://github.com/tpope/vim-sensible
 [vim-git]: https://github.com/tpope/vim-git
 [brew]: http://brew.sh/
-[cask]: https://caskroom.github.io/
 [npm]: https://www.npmjs.com/
