@@ -4,9 +4,9 @@
 	name = Marko Grešak
 	email = marko@gresak.io
 	editor = vim
-	signingkey = 540A397B4A9D7B5D
-[commit]
-	gpgsign = true
+	# signingkey = 540A397B4A9D7B5D
+# [commit]
+# 	gpgsign = true
 [gpg]
 	program = /usr/local/bin/gpg
 [core]
@@ -22,15 +22,7 @@
 	default = current
 [pull]
 	default = current
-[filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+	rebase = true
 
 [init]
 	defaultBranch = main

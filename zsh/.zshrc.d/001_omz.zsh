@@ -14,8 +14,8 @@ plugins=(
   git
   sudo
   fzf
+  deno
 )
 
 source $ZSH/oh-my-zsh.sh
 alias zshconfig="$EDITOR ~/.zshrc"
-# alias ohmyzsh="$EDITOR ~/.oh-my-zsh"

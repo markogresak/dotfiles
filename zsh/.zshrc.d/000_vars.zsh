@@ -15,6 +15,6 @@ export GOPATH="${HOME}/.go"
 # Should be "$(brew --prefix golang)/libexec", but brew --prefix is slow
 export GOROOT="/usr/local/opt/go/libexec"
 
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin:$HOME/.deno/bin"
 
 export PATH="$PATH:/Applications/Sublime Text.app/Contents/SharedSupport/bin"

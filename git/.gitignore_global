@@ -256,7 +256,7 @@ erl_crash.dump
 *.beam
 
 ### VisualStudioCode ###
-.vscode
+# .vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
